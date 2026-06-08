@@ -1,0 +1,11 @@
+[project]
+id = "sfptdiaqmjgznnowyqry"
+
+[api]
+enabled = true
+port = 54321
+max_rows = 1000
+
+[db]
+port = 5432
+major_version = 15
