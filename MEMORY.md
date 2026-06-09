@@ -35,7 +35,7 @@ Matematik 1a/1b/1c, 2a/2b/2c, 3b/3c (ev. fler ämnen senare).
 - `user_profiles` — användarprofil med target_program + current_grades
 
 ### Data ingestat
-- **1584 frågor:** Ma1=393, Ma2=577, Ma3=614 (efter dedup)
+- **1543 frågor:** Ma1=369, Ma2=570, Ma3=604 (efter dedup + junk-cleanup)
 - **144 centralt innehåll-punkter** (per variant: Ma1a=20, Ma1b=19, Ma1c=21, Ma2a=17, Ma2b=16, Ma2c=18, Ma3b=16, Ma3c=17)
 - **24 kunskapskrav** (E/C/A × 8 varianter)
 
@@ -47,9 +47,14 @@ Matematik 1a/1b/1c, 2a/2b/2c, 3b/3c (ev. fler ämnen senare).
 - **Skolverket syllabus**: `https://syllabuswebb.skolverket.se/syllabuscw/jsp/subject.htm?subjectCode=MAT&courseCode={code}&date=2025-01-11&tos=gy`
 
 ### Frågor per kurs × topic
-- **Ma1 (393):** algebra=332, geometri=18, funktioner=22, statistik=12, trigonometri=9, derivata=0
-- **Ma2 (577):** algebra=415, geometri=33, funktioner=90, statistik=14, trigonometri=25, derivata=0
-- **Ma3 (614):** algebra=424, geometri=20, funktioner=60, statistik=4, trigonometri=34, derivata=72
+- **Ma1 (369):** algebra=311, geometri=17, funktioner=21, statistik=11, trigonometri=9, derivata=0
+- **Ma2 (570):** algebra=413, geometri=33, funktioner=90, statistik=14, trigonometri=20, derivata=0
+- **Ma3 (604):** algebra=420, geometri=20, funktioner=60, statistik=4, trigonometri=30, derivata=70
+
+### Frågor per kurs × variant
+- **Ma1:** a=38, b=56, c=48, okänd=227 (Pluggakuten)
+- **Ma2:** a=108, b=111, c=61, okänd=290
+- **Ma3:** b=118, c=79, okänd=407
 
 ## Filstruktur
 ```
