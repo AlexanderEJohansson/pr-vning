@@ -24,20 +24,20 @@ Matematik 1a/1b/1c, 2a/2b/2c, 3b/3c (ev. fler ämnen senare).
 
 ## Databas-state (per 2026-06-09)
 
-### Tabeller (från migration 001)
+### Tabeller (från migration 001 + 002)
 - `subjects` (3+ ämnen, slug=matematik/engelska/...)
 - `levels` (matematik-1, -2, -3) — kopplad till subjects
 - `target_programs` — högskoleprogram
-- `central_content` — Skolverkets centrala innehåll, per nivå
-- `knowledge_requirements` — kunskapskrav E/C/A per nivå
+- `central_content` — Skolverkets centrala innehåll, per nivå **+ variant (a/b/c)**
+- `knowledge_requirements` — kunskapskrav E/C/A per nivå **+ variant (a/b/c)**
 - `questions` — frågedatabas (level_id, topic_id, question_text, correct_text, source_year)
 - `question_topics` — algebra/geometri/funktioner/statistik/trigonometri/derivata
 - `user_profiles` — användarprofil med target_program + current_grades
 
 ### Data ingestat
 - **1584 frågor:** Ma1=393, Ma2=577, Ma3=614 (efter dedup)
-- **56 centralt innehåll-punkter** (8 kurser × ~7 punkter)
-- **9 kunskapskrav** (E/C/A × 3 nivåer)
+- **144 centralt innehåll-punkter** (per variant: Ma1a=20, Ma1b=19, Ma1c=21, Ma2a=17, Ma2b=16, Ma2c=18, Ma3b=16, Ma3c=17)
+- **24 kunskapskrav** (E/C/A × 8 varianter)
 
 ### Källor
 - **Pluggakuten** (~916 frågor): `resources/curriculum/scrape-pluggakuten.ts`
@@ -83,6 +83,13 @@ supabase/
 - `tsconfig.json` exkluderar `resources/` + `scripts/` så scraping-koden inte hindrar Vercel-build
 - `.env.local`: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
 - Service role key är `eyJhbG…re3Q`-format (JWT). `sb_secret_…` är publishable, fungerar inte mot RLS-skyddade tabeller.
+
+## DDL via Management API
+- Service-role-nyckeln räcker INTE för DDL via PostgREST (`exec_sql` RPC saknas)
+- DATABASE_URL i `.env.local` är platshållare (`[PASSWORD]`)
+- Lösning: **Supabase Management API** `POST /v1/projects/<ref>/database/query` med personal access token (sbp_*)
+- Personal access token finns lokalt utanför repo (sök `sbp_` i `~/.openclaw/agents/main/sessions/` om den behövs igen, eller skapa ny på https://supabase.com/dashboard/account/tokens)
+- Fungerar för migrations + seed utan att behöva CLI eller psql
 
 ## Workflow
 1. Alexander skickar `SPEC.md`
