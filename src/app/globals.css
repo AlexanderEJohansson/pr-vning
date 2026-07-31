@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
 :root {
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -9,4 +9,59 @@ body {
   font-family: var(--font-sans);
   background-color: #F8FAFC;
   color: #1E293B;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in-fade {
+  animation: fade-in-up 0.45s ease-out both;
+}
+
+.shadow-card {
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 0.04),
+    0 4px 12px rgb(15 23 42 / 0.04);
+}
+
+.shadow-card-hover:hover {
+  box-shadow:
+    0 2px 4px rgb(15 23 42 / 0.06),
+    0 8px 24px rgb(15 23 42 / 0.08);
+}
+
+.card-gradient-border {
+  position: relative;
+}
+
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.card-gradient-border:hover::before {
+  opacity: 1;
 }

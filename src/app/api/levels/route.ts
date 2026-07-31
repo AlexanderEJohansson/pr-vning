@@ -1,9 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@/lib/supabase/server';
+import { createServerClient, hasSupabaseEnv } from '@/lib/supabase/server';
 
 // GET /api/levels — list all levels
 export async function GET(req: NextRequest) {
+  if (!hasSupabaseEnv()) {
+    return NextResponse.json(
+      { error: 'Supabase is not configured', levels: [] },
+      { status: 503 }
+    );
+  }
+
   const supabase = await createServerClient();
+  if (!supabase) {
+    return NextResponse.json({ error: 'Supabase unavailable', levels: [] }, { status: 503 });
+  }
+
   const { searchParams } = new URL(req.url);
   const subject = searchParams.get('subject');
 

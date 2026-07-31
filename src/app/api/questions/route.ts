@@ -1,15 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@/lib/supabase/server';
+import { createServerClient, hasSupabaseEnv } from '@/lib/supabase/server';
 
 // GET /api/questions?level=matematik-2&variant=b&topic=algebra&limit=20&offset=0
-// Returns paginated questions for a given level (optionally filtered by variant + topic)
 export async function GET(req: NextRequest) {
+  if (!hasSupabaseEnv()) {
+    return NextResponse.json(
+      { error: 'Supabase is not configured', questions: [], pagination: { total: 0 } },
+      { status: 503 }
+    );
+  }
+
   const supabase = await createServerClient();
+  if (!supabase) {
+    return NextResponse.json(
+      { error: 'Supabase unavailable', questions: [], pagination: { total: 0 } },
+      { status: 503 }
+    );
+  }
+
   const { searchParams } = new URL(req.url);
 
   const levelSlug = searchParams.get('level');
-  const variant = searchParams.get('variant'); // 'a' | 'b' | 'c' | null = no filter
-  const topicSlug = searchParams.get('topic'); // e.g. 'algebra' (without 'matematik-' prefix)
+  const variant = searchParams.get('variant');
+  const topicSlug = searchParams.get('topic');
   const limit = Math.min(Number(searchParams.get('limit')) || 20, 100);
   const offset = Math.max(Number(searchParams.get('offset')) || 0, 0);
   const includeNullVariant = searchParams.get('includeNullVariant') !== 'false';
@@ -32,7 +45,6 @@ export async function GET(req: NextRequest) {
 
   let topicId: string | null = null;
   if (topicSlug) {
-    // Accept both 'algebra' and 'matematik-algebra' as input
     const fullSlug = topicSlug.startsWith('matematik-') ? topicSlug : `matematik-${topicSlug}`;
     const { data: topic } = await supabase
       .from('question_topics')
@@ -52,7 +64,6 @@ export async function GET(req: NextRequest) {
 
   if (variant && ['a', 'b', 'c'].includes(variant)) {
     if (includeNullVariant) {
-      // Match the requested variant OR generic Pluggakuten questions (variant IS NULL)
       query = query.or(`variant.eq.${variant},variant.is.null`);
     } else {
       query = query.eq('variant', variant);

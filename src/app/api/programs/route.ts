@@ -1,9 +1,19 @@
 import { NextResponse } from 'next/server';
-import { createServerClient } from '@/lib/supabase/server';
+import { createServerClient, hasSupabaseEnv } from '@/lib/supabase/server';
 
 // GET /api/programs — list all target programs
 export async function GET() {
+  if (!hasSupabaseEnv()) {
+    return NextResponse.json(
+      { error: 'Supabase is not configured', programs: [] },
+      { status: 503 }
+    );
+  }
+
   const supabase = await createServerClient();
+  if (!supabase) {
+    return NextResponse.json({ error: 'Supabase unavailable', programs: [] }, { status: 503 });
+  }
 
   const { data: programs, error } = await supabase
     .from('target_programs')

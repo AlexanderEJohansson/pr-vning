@@ -105,11 +105,17 @@ supabase/
 - Inga emojis. Vuxen ton. Skolverket-anpassad SEO.
 
 ## Kvarstående
-- `/kurser`-sida (homepage länkar dit, finns inte än)
-- Frågevisning UI
-- Quiz/övningsflöde
-- Auth-flöde
-- (Allt detta väntar på SPEC.md)
+- Auth-flöde (Supabase Auth + progress)
+- Progress-sparning per användare
+- DNS: prövning.se → Vercel (sist)
+- Env: `.env.local` med Supabase-nycklar för live-frågor
+
+## Klart (UI, 2026-07)
+- `AGENTS.md` med autonom loop-policy
+- `/kurser`, `/kurser/[level]`, `/kurser/[level]/ova` (övningsflöde)
+- `/om`, förbättrad startsida, header/footer
+- Fråge-UI: visa svar, nästa, ny omgång, filter variant+topic
+- API-routes tål saknad Supabase-env (503 istället för crash)
 
 ## Lärdomar
 - **Matteboken.se kräver login sedan ~2025** för att ladda PDF — bypass via Wayback Machine med `id_/`-prefix
