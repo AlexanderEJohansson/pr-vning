@@ -4,18 +4,28 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://xn--prvning-b1a.se'),
   title: {
-    default: 'Prövning.se — Öva gratis inför prövning i matematik',
+    default: 'Prövning.se — Höj gymnasiebetyg, anmäl dig och öva matte',
     template: '%s | Prövning.se',
   },
   description:
-    'Gratis övning inför prövning i matematik på komvux. Matematik 1, 2 och 3. För dig som läser upp betyg inför högskolan.',
+    'För vuxna som vill höja gymnasiebetyg: förstå prövning, anmäla dig via kommun eller gymnasium, kolla behörighet och öva Matematik 1–3 gratis.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Prövning.se — Öva gratis inför prövning i matematik',
+    title: 'Prövning.se — Höj gymnasiebetyg via prövning',
     description:
-      'Gratis övning inför prövning i matematik på komvux. Matematik 1a/1b/1c, 2a/2b/2c, 3b/3c.',
+      'Anmälan, vanliga frågor och gratis övning i Matematik 1–3. Inte en myndighetssajt — officiella regler hos Skolverket.',
     locale: 'sv_SE',
     type: 'website',
+    url: 'https://xn--prvning-b1a.se',
+    siteName: 'Prövning.se',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

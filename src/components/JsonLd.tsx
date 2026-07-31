@@ -73,6 +73,18 @@ export function webSiteSchema() {
       '@type': 'Organization',
       name: 'Prövning.se',
       url: 'https://xn--prvning-b1a.se',
+      sameAs: [
+        'https://npmonstret.se',
+        'https://npmonstret.se/antagningskoll',
+        'https://npguide.se',
+        'https://npprov.se',
+      ],
     },
+    sameAs: [
+      'https://npmonstret.se',
+      'https://npmonstret.se/antagningskoll',
+      'https://npguide.se',
+      'https://npprov.se',
+    ],
   };
 }

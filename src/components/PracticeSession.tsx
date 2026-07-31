@@ -266,6 +266,46 @@ export function PracticeSession({
             Visade svar i omgången: {revealedCount}
             {seen > 0 ? ` · Navigerade: ${seen + 1}` : ''}
           </p>
+
+          <aside className="mt-8 rounded-2xl border border-emerald-100 bg-emerald-50/50 p-5 text-sm leading-relaxed text-slate-700">
+            <p className="font-semibold text-slate-900">Nästa steg i betygsresan</p>
+            <ul className="mt-2 list-disc space-y-1.5 pl-5">
+              <li>
+                Kolla vad utbildningen kräver med{' '}
+                <a
+                  href="https://npmonstret.se/antagningskoll"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-emerald-800 underline underline-offset-2"
+                >
+                  NP-Monstrets antagningskoll
+                </a>
+                .
+              </li>
+              <li>
+                Osäker på anmälan?{' '}
+                <Link
+                  href="/anmalan"
+                  className="font-medium text-emerald-800 underline underline-offset-2"
+                >
+                  Så anmäler du dig till prövning
+                </Link>
+                .
+              </li>
+              <li>
+                Mer träning i flera ämnen:{' '}
+                <a
+                  href="https://npmonstret.se/komvux"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-emerald-800 underline underline-offset-2"
+                >
+                  komvux på NP-Monstret
+                </a>
+                .
+              </li>
+            </ul>
+          </aside>
         </>
       )}
     </div>
