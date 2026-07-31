@@ -22,6 +22,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="sv">
+      <head>
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="/llms.txt"
+          title="Instructions for AI agents (llms.txt)"
+        />
+      </head>
       <body className="flex min-h-screen flex-col bg-slate-50 text-slate-800 antialiased">
         <SiteHeader />
         <div className="flex-1">{children}</div>

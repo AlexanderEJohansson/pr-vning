@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AnimateIn } from '@/components/AnimateIn';
+import { EcosystemCta } from '@/components/EcosystemCta';
 import { MATH_LEVELS } from '@/lib/math-catalog';
+import { ECOSYSTEM } from '@/lib/ecosystem';
 
 export const metadata: Metadata = {
   title: 'Kurser',
@@ -74,8 +76,22 @@ export default function KurserPage() {
         </ul>
         <p className="mt-3 text-sm text-slate-500">
           Osäker? Börja utan filter — du får blandade uppgifter och kan snäva in senare.
+          Behöver du fler ämnen eller komvux-träning?{' '}
+          <a
+            href={ECOSYSTEM.komvux.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-emerald-700 underline underline-offset-2"
+          >
+            NP-Monstret komvux
+          </a>
+          .
         </p>
       </AnimateIn>
+
+      <div className="mt-10">
+        <EcosystemCta variant="antagning" />
+      </div>
     </main>
   );
 }

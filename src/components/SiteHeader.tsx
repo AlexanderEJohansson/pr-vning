@@ -1,33 +1,37 @@
 import Link from 'next/link';
 
 const links = [
+  { href: '/hoja-betyg', label: 'Höja betyg' },
+  { href: '/anmalan', label: 'Anmälan' },
   { href: '/kurser', label: 'Kurser' },
-  { href: '/om', label: 'Om' },
+  { href: '/faq', label: 'FAQ' },
 ];
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-slate-200/80 bg-white/80 backdrop-blur sticky top-0 z-40">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-        <Link href="/" className="text-lg font-bold tracking-tight text-slate-900">
+    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur">
+      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-4">
+        <Link href="/" className="shrink-0 text-lg font-bold tracking-tight text-slate-900">
           Prövning<span className="text-emerald-500">.se</span>
         </Link>
-        <nav className="flex items-center gap-1">
+        <nav className="flex items-center gap-0.5 overflow-x-auto">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+              className="whitespace-nowrap rounded-lg px-2.5 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:px-3"
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/kurser"
-            className="ml-2 rounded-xl bg-emerald-500 px-3.5 py-1.5 text-sm font-semibold text-white transition hover:bg-emerald-600"
+          <a
+            href="https://npmonstret.se/antagningskoll"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-1 whitespace-nowrap rounded-xl bg-emerald-500 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-emerald-600"
           >
-            Börja öva
-          </Link>
+            Antagningskoll
+          </a>
         </nav>
       </div>
     </header>

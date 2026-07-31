@@ -109,13 +109,13 @@ supabase/
 - Progress-sparning per användare
 - DNS: prövning.se → Vercel (sist)
 - Env: `.env.local` med Supabase-nycklar för live-frågor
+- GA4 outbound till npmonstret (när analytics finns)
 
-## Klart (UI, 2026-07)
-- `AGENTS.md` med autonom loop-policy
-- `/kurser`, `/kurser/[level]`, `/kurser/[level]/ova` (övningsflöde)
-- `/om`, förbättrad startsida, header/footer
-- Fråge-UI: visa svar, nästa, ny omgång, filter variant+topic
-- API-routes tål saknad Supabase-env (503 istället för crash)
+## Klart (UI + GEO, 2026-07)
+- `AGENTS.md`, övningsflöde Ma1–3
+- GEO: `/anmalan` (HowTo), `/faq` (15 Q), `/kallor`, `/hoja-betyg`, `llms.txt`, sitemap
+- Ekosystem-CTA: antagningskoll, komvux, npguide, npprov
+- Reciprokt: npmonstret `/komvux`, npguide footer, npprov EcosystemLinks
 
 ## Lärdomar
 - **Matteboken.se kräver login sedan ~2025** för att ladda PDF — bypass via Wayback Machine med `id_/`-prefix

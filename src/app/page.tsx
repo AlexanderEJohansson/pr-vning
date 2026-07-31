@@ -1,95 +1,212 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AnimateIn } from '@/components/AnimateIn';
+import { EcosystemCta } from '@/components/EcosystemCta';
+import { FaqList } from '@/components/FaqList';
+import { JsonLd, faqPageSchema, webSiteSchema } from '@/components/JsonLd';
+import { QuickAnswer } from '@/components/QuickAnswer';
+import { ECOSYSTEM } from '@/lib/ecosystem';
+import { faqByIds, FAQ_HOME_IDS } from '@/lib/faq-data';
 import { MATH_LEVELS } from '@/lib/math-catalog';
 
+export const metadata: Metadata = {
+  title: 'Prövning.se — Höj gymnasiebetyg, anmäl dig och öva matte',
+  description:
+    'För vuxna som vill höja gymnasiebetyg: förstå prövning, anmäla dig via kommun eller gymnasium, kolla behörighet och öva Matematik 1–3 gratis.',
+};
+
+const homeFaq = faqByIds(FAQ_HOME_IDS);
 const totalQuestions = MATH_LEVELS.reduce((sum, l) => sum + l.estimatedQuestions, 0);
 
 export default function HomePage() {
   return (
     <main>
-      <section className="mx-auto max-w-5xl px-4 pb-16 pt-14 sm:pt-20">
+      <JsonLd data={[webSiteSchema(), faqPageSchema(homeFaq, 'https://xn--prvning-b1a.se/')]} />
+
+      <section className="mx-auto max-w-5xl px-4 pb-8 pt-14 sm:pt-16">
         <AnimateIn>
           <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600">
-            Komvux · prövning · matematik
+            Vuxna · höja betyg · prövning · komvux
           </p>
-          <h1 className="mt-3 max-w-2xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-            Öva inför prövning i matematik — gratis
+          <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            Höj gymnasiebetyg — förstå prövning, anmäl dig rätt, öva matte
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
-            För dig som läser upp betyg på komvux eller tar prövning. Över{' '}
-            {totalQuestions.toLocaleString('sv-SE')} frågor i Matematik 1, 2 och 3.
-            Vuxen ton, ingen barnslig app.
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
+            Gratis vägledning för dig som vill komplettera eller höja betyg som vuxen.
+            Vi förklarar prövning på vuxenspråk, visar hur anmälan funkar via kommun och
+            gymnasium, och ger dig övning i Matematik 1–3.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/kurser"
-              className="rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
-            >
-              Välj din kurs
-            </Link>
-            <Link
-              href="/om"
-              className="rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-            >
-              Om prövning
-            </Link>
-          </div>
         </AnimateIn>
 
-        <div className="mt-16 grid gap-4 sm:grid-cols-3">
+        <div className="mt-8">
+          <QuickAnswer>
+            <p>
+              Börja med att kolla vad din utbildning kräver via{' '}
+              <a
+                href={ECOSYSTEM.antagningskoll.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-emerald-800 underline underline-offset-2"
+              >
+                NP-Monstrets antagningskoll
+              </a>
+              , anmäl dig via{' '}
+              <Link href="/anmalan" className="font-semibold text-emerald-800 underline underline-offset-2">
+                din kommun eller skola
+              </Link>
+              , och{' '}
+              <Link href="/kurser" className="font-semibold text-emerald-800 underline underline-offset-2">
+                öva matte här
+              </Link>
+              . Prövning.se är inte Skolverket — officiella regler finns hos myndigheten.
+            </p>
+          </QuickAnswer>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              href: ECOSYSTEM.antagningskoll.href,
+              external: true,
+              step: '1',
+              title: 'Vad behöver du?',
+              body: 'Kolla behörighet med NP-Monstrets antagningskoll innan du väljer kurs.',
+              cta: 'Öppna antagningskoll',
+            },
+            {
+              href: '/anmalan',
+              external: false,
+              step: '2',
+              title: 'Anmäl dig rätt',
+              body: 'Steg för komvux och gymnasium. Exempel från kommuner. Ingen nationell knapp.',
+              cta: 'Så anmäler du dig',
+            },
+            {
+              href: '/kurser',
+              external: false,
+              step: '3',
+              title: 'Öva matte',
+              body: `Över ${totalQuestions.toLocaleString('sv-SE')} frågor i Matematik 1, 2 och 3.`,
+              cta: 'Välj kurs',
+            },
+          ].map((card, i) => {
+            const className =
+              'card-gradient-border shadow-card shadow-card-hover flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 transition';
+            const inner = (
+              <>
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-sm font-bold text-emerald-700">
+                  {card.step}
+                </span>
+                <h2 className="mt-4 text-lg font-bold text-slate-900">{card.title}</h2>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{card.body}</p>
+                <span className="mt-4 text-sm font-semibold text-emerald-600">{card.cta} →</span>
+              </>
+            );
+            return (
+              <AnimateIn key={card.step} delayMs={60 * (i + 1)}>
+                {card.external ? (
+                  <a
+                    href={card.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <Link href={card.href} className={className}>
+                    {inner}
+                  </Link>
+                )}
+              </AnimateIn>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-4 py-10">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <h2 className="text-xl font-bold text-slate-900">Öva Matematik 1–3</h2>
+          <Link href="/hoja-betyg" className="text-sm font-medium text-emerald-700 underline underline-offset-2">
+            Guide: höja betyg
+          </Link>
+        </div>
+        <div className="mt-5 grid gap-4 sm:grid-cols-3">
           {MATH_LEVELS.map((level, i) => (
-            <AnimateIn key={level.slug} delayMs={80 * (i + 1)}>
+            <AnimateIn key={level.slug} delayMs={40 * i}>
               <Link
                 href={`/kurser/${level.slug}`}
-                className="card-gradient-border shadow-card shadow-card-hover block rounded-2xl border border-slate-200 bg-white p-6 transition"
+                className="shadow-card shadow-card-hover block rounded-2xl border border-slate-200 bg-white p-5 transition"
               >
                 <div className="flex items-baseline justify-between">
-                  <h2 className="text-xl font-bold text-slate-900">{level.name}</h2>
-                  <span className="text-sm font-medium text-emerald-600">
-                    {level.estimatedQuestions} frågor
+                  <h3 className="font-bold text-slate-900">{level.name}</h3>
+                  <span className="text-xs font-medium text-slate-500">
+                    ~{level.estimatedQuestions}
                   </span>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{level.description}</p>
-                <p className="mt-4 text-xs font-medium text-slate-400">
-                  {level.variants.map((v) => v.shortName).join(' · ')}
-                </p>
+                <p className="mt-2 text-sm text-slate-600 line-clamp-2">{level.description}</p>
               </Link>
             </AnimateIn>
           ))}
         </div>
+      </section>
 
-        <AnimateIn delayMs={320} className="mt-16 rounded-2xl border border-slate-200 bg-white p-8 shadow-card">
-          <h2 className="text-lg font-bold text-slate-900">Så funkar det</h2>
-          <ol className="mt-4 grid gap-4 sm:grid-cols-3">
-            {[
-              {
-                step: '1',
-                title: 'Välj kurs',
-                body: 'Matematik 1, 2 eller 3 — och rätt variant (a/b/c) om du vill.',
-              },
-              {
-                step: '2',
-                title: 'Filtrera ämne',
-                body: 'Algebra, funktioner, derivata och mer. Eller blanda allt.',
-              },
-              {
-                step: '3',
-                title: 'Öva i din takt',
-                body: 'Läs uppgiften, tänk själv, visa facit när du är redo.',
-              },
-            ].map((item) => (
-              <li key={item.step} className="flex gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-sm font-bold text-emerald-700">
-                  {item.step}
-                </span>
-                <div>
-                  <p className="font-semibold text-slate-800">{item.title}</p>
-                  <p className="mt-1 text-sm text-slate-600">{item.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </AnimateIn>
+      <section className="mx-auto max-w-5xl px-4 pb-10">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
+          <h2 className="text-lg font-bold text-slate-900">Snabbfakta om prövning</h2>
+          <ul className="mt-4 grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
+            <li className="flex gap-2">
+              <span className="font-bold text-emerald-600">·</span>
+              Gäller hela kursen eller nivån — inte bara en del.
+            </li>
+            <li className="flex gap-2">
+              <span className="font-bold text-emerald-600">·</span>
+              Anmälan sker lokalt (kommun/skola), inte nationellt.
+            </li>
+            <li className="flex gap-2">
+              <span className="font-bold text-emerald-600">·</span>
+              Vuxna går oftast via komvux; gymnasieelever via sin skola.
+            </li>
+            <li className="flex gap-2">
+              <span className="font-bold text-emerald-600">·</span>
+              Avgift och tider bestäms lokalt.
+            </li>
+          </ul>
+          <p className="mt-4 text-sm text-slate-500">
+            Källa:{' '}
+            <a
+              href={ECOSYSTEM.skolverketProvning.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-emerald-700 underline underline-offset-2"
+            >
+              Skolverket — Prövning för betyg
+            </a>
+            . Mer i{' '}
+            <Link href="/faq" className="font-medium text-emerald-700 underline underline-offset-2">
+              FAQ
+            </Link>{' '}
+            och{' '}
+            <Link href="/kallor" className="font-medium text-emerald-700 underline underline-offset-2">
+              källor
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-4 pb-10">
+        <FaqList items={homeFaq} title="Vanliga frågor" />
+        <p className="mt-4 text-sm text-slate-500">
+          <Link href="/faq" className="font-medium text-emerald-700 underline underline-offset-2">
+            Visa alla frågor
+          </Link>
+        </p>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-4 pb-16 space-y-6">
+        <EcosystemCta variant="full" />
+        <EcosystemCta variant="compact" />
       </section>
     </main>
   );
