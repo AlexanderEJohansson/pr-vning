@@ -2,20 +2,28 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AnimateIn } from '@/components/AnimateIn';
 import { EcosystemCta } from '@/components/EcosystemCta';
+import { FaqList } from '@/components/FaqList';
+import { JsonLd, faqPageSchema } from '@/components/JsonLd';
 import { MATH_LEVELS } from '@/lib/math-catalog';
-import { ECOSYSTEM } from '@/lib/ecosystem';
+import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
+import { faqByIds, FAQ_KURSER_IDS } from '@/lib/faq-data';
 
 export const metadata: Metadata = {
-  title: 'Kurser',
+  title: 'Öva Matematik 1–3 inför prövning',
   description:
-    'Välj Matematik 1, 2 eller 3 och öva inför prövning på komvux. Gratis frågebank.',
+    'Välj Matematik 1, 2 eller 3 och öva inför prövning på komvux. Gratis frågebank för vuxna som vill höja betyg.',
 };
+
+const kurserFaq = faqByIds(FAQ_KURSER_IDS);
 
 export default function KurserPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-12">
+      <JsonLd data={faqPageSchema(kurserFaq, 'https://xn--prvning-b1a.se/kurser')} />
       <AnimateIn>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900">Kurser</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900">
+          Öva Matematik 1–3 inför prövning
+        </h1>
         <p className="mt-3 max-w-2xl text-slate-600">
           Välj den mattekurs du ska pröva eller läsa upp. Du kan filtrera på variant
           (1a, 2b, 3c …) och ämnesområde när du startar övningen.
@@ -78,7 +86,7 @@ export default function KurserPage() {
           Osäker? Börja utan filter — du får blandade uppgifter och kan snäva in senare.
           Behöver du fler ämnen eller komvux-träning?{' '}
           <a
-            href={ECOSYSTEM.komvux.href}
+            href={withEcosystemUtm(ECOSYSTEM.komvux.href, 'kurser')}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-emerald-700 underline underline-offset-2"
@@ -89,8 +97,13 @@ export default function KurserPage() {
         </p>
       </AnimateIn>
 
+      <div className="mt-12">
+        <FaqList items={kurserFaq} title="Vanliga frågor om kurser och övning" />
+      </div>
+
       <div className="mt-10">
-        <EcosystemCta variant="antagning" />
+        <EcosystemCta variant="antagning" campaign="kurser" />
+        <EcosystemCta variant="train" campaign="kurser" />
       </div>
     </main>
   );

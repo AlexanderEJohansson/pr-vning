@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AnimateIn } from '@/components/AnimateIn';
+import { CiteMagnet, CITE_MAGNETS } from '@/components/CiteMagnet';
 import { EcosystemCta } from '@/components/EcosystemCta';
 import {
   JsonLd,
@@ -10,17 +11,17 @@ import {
 } from '@/components/JsonLd';
 import { QuickAnswer } from '@/components/QuickAnswer';
 import { SourceList } from '@/components/SourceList';
-import { ECOSYSTEM } from '@/lib/ecosystem';
+import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
 import { faqByIds } from '@/lib/faq-data';
 import { KOMMUN_EXAMPLES, sourceById, SOURCES_UPDATED } from '@/lib/sources';
 import { FaqList } from '@/components/FaqList';
 
 export const metadata: Metadata = {
-  title: 'Anmälan till prövning — gymnasiet och komvux',
+  title: 'Hur anmäler du dig till prövning?',
   description:
     'Hur anmäler du dig till prövning för att höja gymnasiebetyg? Steg för steg för vuxna via komvux och gymnasieskola. Skolverket, kommun-exempel och nästa steg.',
   openGraph: {
-    title: 'Anmälan till prövning — Prövning.se',
+    title: 'Hur anmäler du dig till prövning? — Prövning.se',
     description:
       'Steg-för-steg: hur vuxna anmäler sig till prövning via kommun och gymnasium. Inte en myndighetssajt.',
   },
@@ -62,6 +63,11 @@ export default function AnmalanPage() {
     'kostar-det',
     'tid',
     'far-jag-prova-igen',
+    'id-legitimation',
+    'annan-kommun',
+    'flera-ganger',
+    'betyg-tid',
+    'distans',
   ]);
 
   const sources = [
@@ -100,11 +106,12 @@ export default function AnmalanPage() {
           <span className="text-slate-700">Anmälan</span>
         </nav>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
-          Så anmäler du dig till prövning
+          Hur anmäler du dig till prövning?
         </h1>
       </AnimateIn>
 
-      <div className="mt-6">
+      <div className="mt-6 space-y-4">
+        <CiteMagnet text={CITE_MAGNETS.anmalan} />
         <QuickAnswer>
           <p>
             Det finns ingen nationell e-tjänst för prövning. Du anmäler dig via{' '}
@@ -140,7 +147,7 @@ export default function AnmalanPage() {
                 <p className="mt-1 text-sm leading-relaxed text-slate-600">{step.text}</p>
                 {i === 1 && (
                   <a
-                    href={ECOSYSTEM.antagningskoll.href}
+                    href={withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'anmalan')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 inline-block text-sm font-semibold text-emerald-700 underline underline-offset-2"
@@ -154,7 +161,15 @@ export default function AnmalanPage() {
                       Öva matte här
                     </Link>
                     <a
-                      href={ECOSYSTEM.komvux.href}
+                      href={withEcosystemUtm(ECOSYSTEM.npcoachen.href, 'anmalan')}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-700 underline underline-offset-2"
+                    >
+                      NPcoachen på NP-Monstret
+                    </a>
+                    <a
+                      href={withEcosystemUtm(ECOSYSTEM.komvux.href, 'anmalan')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-700 underline underline-offset-2"
@@ -215,7 +230,8 @@ export default function AnmalanPage() {
       </section>
 
       <div className="mt-10">
-        <EcosystemCta variant="antagning" />
+        <EcosystemCta variant="antagning" campaign="anmalan" />
+        <EcosystemCta variant="train" campaign="anmalan" />
       </div>
 
       <div className="mt-12">

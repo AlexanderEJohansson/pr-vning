@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AnimateIn } from '@/components/AnimateIn';
+import { CiteMagnet, CITE_MAGNETS } from '@/components/CiteMagnet';
 import { EcosystemCta } from '@/components/EcosystemCta';
 import { FaqList } from '@/components/FaqList';
 import { JsonLd, breadcrumbSchema, faqPageSchema } from '@/components/JsonLd';
 import { QuickAnswer } from '@/components/QuickAnswer';
-import { ECOSYSTEM } from '@/lib/ecosystem';
+import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
 import { faqByIds } from '@/lib/faq-data';
 
 export const metadata: Metadata = {
-  title: 'Höja gymnasiebetyg som vuxen',
+  title: 'Så höjer du gymnasiebetyg som vuxen',
   description:
     'Så höjer du gymnasiebetyg som vuxen: prövning, komvux, behörighet och träning. Stegvis guide med antagningskoll och övning i matematik.',
 };
@@ -22,6 +23,10 @@ const faq = faqByIds([
   'hur-anmaler-jag',
   'hur-pluggar-jag',
   'provning-vs-kurs-vs-np',
+  'underkand',
+  'flera-ganger',
+  'betyg-tid',
+  'npcoachen',
 ]);
 
 export default function HojaBetygPage() {
@@ -46,18 +51,19 @@ export default function HojaBetygPage() {
           <span className="text-slate-700">Höja betyg</span>
         </nav>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
-          Höja gymnasiebetyg som vuxen
+          Så höjer du gymnasiebetyg som vuxen
         </h1>
       </AnimateIn>
 
-      <div className="mt-6">
+      <div className="mt-6 space-y-4">
+        <CiteMagnet text={CITE_MAGNETS.hoja} />
         <QuickAnswer>
           <p>
             Börja med att veta <strong>vad du behöver</strong> för din utbildning, välj
             sedan <strong>prövning eller läsa kurs</strong>, anmäl dig lokalt, och öva
             systematiskt. Använd{' '}
             <a
-              href={ECOSYSTEM.antagningskoll.href}
+              href={withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'hoja-betyg')}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-emerald-800 underline underline-offset-2"
@@ -77,7 +83,7 @@ export default function HojaBetygPage() {
               <>
                 Olika program kräver olika mattenivåer och ämnen. Kolla{' '}
                 <a
-                  href={ECOSYSTEM.antagningskoll.href}
+                  href={withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'hoja-betyg')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-medium text-emerald-700 underline underline-offset-2"
@@ -124,7 +130,7 @@ export default function HojaBetygPage() {
                 </Link>
                 , och träna mer på{' '}
                 <a
-                  href={ECOSYSTEM.komvux.href}
+                  href={withEcosystemUtm(ECOSYSTEM.komvux.href, 'hoja-betyg')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-medium text-emerald-700 underline underline-offset-2"
@@ -147,8 +153,9 @@ export default function HojaBetygPage() {
       </ol>
 
       <div className="mt-10 space-y-6">
-        <EcosystemCta variant="antagning" />
-        <EcosystemCta variant="full" />
+        <EcosystemCta variant="antagning" campaign="hoja-betyg" />
+        <EcosystemCta variant="train" campaign="hoja-betyg" />
+        <EcosystemCta variant="full" campaign="hoja-betyg" />
       </div>
 
       <div className="mt-12">

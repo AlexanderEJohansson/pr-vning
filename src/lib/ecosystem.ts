@@ -1,4 +1,23 @@
-/** Kanoniska länkar i Lärinsikt-ekosystemet */
+/** Kanoniska länkar i Lärinsikt-ekosystemet.
+ * UTM-standard (Fas 0): utm_source=provning&utm_medium=ecosystem&utm_campaign={page}
+ * Använd withEcosystemUtm() när länken renderas från en specifik sida.
+ */
+
+const UTM_SOURCE = 'provning';
+const UTM_MEDIUM = 'ecosystem';
+
+export function withEcosystemUtm(href: string, campaign: string): string {
+  try {
+    const u = new URL(href);
+    u.searchParams.set('utm_source', UTM_SOURCE);
+    u.searchParams.set('utm_medium', UTM_MEDIUM);
+    u.searchParams.set('utm_campaign', campaign);
+    return u.toString();
+  } catch {
+    const sep = href.includes('?') ? '&' : '?';
+    return `${href}${sep}utm_source=${UTM_SOURCE}&utm_medium=${UTM_MEDIUM}&utm_campaign=${encodeURIComponent(campaign)}`;
+  }
+}
 
 export const ECOSYSTEM = {
   antagningskoll: {
@@ -12,6 +31,18 @@ export const ECOSYSTEM = {
     label: 'NP-Monstret',
     short: 'NP-Monstret',
     description: 'Träna mer — fler ämnen, komvux och nationella prov.',
+  },
+  npcoachen: {
+    href: 'https://npmonstret.se/npcoachen',
+    label: 'NPcoachen',
+    short: 'NPcoachen',
+    description: 'Personlig träningsloop utifrån dina luckor och betygsmål.',
+  },
+  pris: {
+    href: 'https://npmonstret.se/pris',
+    label: 'Priser på NP-Monstret',
+    short: 'Priser',
+    description: 'Vecka 19 kr, Bas 49 kr/mån, Premium 99 kr/mån.',
   },
   komvux: {
     href: 'https://npmonstret.se/komvux',

@@ -74,8 +74,8 @@ export default function FaqPage() {
       </div>
 
       <div className="mt-12 space-y-6">
-        <EcosystemCta variant="antagning" />
-        <EcosystemCta variant="train" />
+        <EcosystemCta variant="antagning" campaign="faq" />
+        <EcosystemCta variant="train" campaign="faq" />
       </div>
 
       <p className="mt-10 text-center text-sm text-slate-500">

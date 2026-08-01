@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AnimateIn } from '@/components/AnimateIn';
+import { CiteMagnet, CITE_MAGNETS } from '@/components/CiteMagnet';
 import { EcosystemCta } from '@/components/EcosystemCta';
 import { FaqList } from '@/components/FaqList';
 import { JsonLd, faqPageSchema, webSiteSchema } from '@/components/JsonLd';
 import { QuickAnswer } from '@/components/QuickAnswer';
-import { ECOSYSTEM } from '@/lib/ecosystem';
+import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
 import { faqByIds, FAQ_HOME_IDS } from '@/lib/faq-data';
 import { MATH_LEVELS } from '@/lib/math-catalog';
 
@@ -38,12 +39,13 @@ export default function HomePage() {
           </p>
         </AnimateIn>
 
-        <div className="mt-8">
+        <div className="mt-8 space-y-4">
+          <CiteMagnet text={CITE_MAGNETS.home} />
           <QuickAnswer>
             <p>
               Börja med att kolla vad din utbildning kräver via{' '}
               <a
-                href={ECOSYSTEM.antagningskoll.href}
+                href={withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'home')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-emerald-800 underline underline-offset-2"
@@ -66,7 +68,7 @@ export default function HomePage() {
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
           {[
             {
-              href: ECOSYSTEM.antagningskoll.href,
+              href: withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'home'),
               external: true,
               step: '1',
               title: 'Vad behöver du?',
@@ -205,8 +207,9 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-4 pb-16 space-y-6">
-        <EcosystemCta variant="full" />
-        <EcosystemCta variant="compact" />
+        <EcosystemCta variant="full" campaign="home" />
+        <EcosystemCta variant="train" campaign="home" />
+        <EcosystemCta variant="compact" campaign="home" />
       </section>
     </main>
   );

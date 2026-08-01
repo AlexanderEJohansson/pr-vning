@@ -1,8 +1,23 @@
-import { ECOSYSTEM } from '@/lib/ecosystem';
+import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
 
 type Variant = 'full' | 'antagning' | 'train' | 'compact';
 
-export function EcosystemCta({ variant = 'full' }: { variant?: Variant }) {
+/** campaign: page slug for utm_campaign (e.g. home, anmalan, hoja-betyg) */
+export function EcosystemCta({
+  variant = 'full',
+  campaign = 'site',
+}: {
+  variant?: Variant;
+  campaign?: string;
+}) {
+  const antagning = withEcosystemUtm(ECOSYSTEM.antagningskoll.href, campaign);
+  const komvux = withEcosystemUtm(ECOSYSTEM.komvux.href, campaign);
+  const monstrets = withEcosystemUtm(ECOSYSTEM.npmonstret.href, campaign);
+  const npcoachen = withEcosystemUtm(ECOSYSTEM.npcoachen.href, campaign);
+  const pris = withEcosystemUtm(ECOSYSTEM.pris.href, campaign);
+  const npguide = withEcosystemUtm(ECOSYSTEM.npguide.href, campaign);
+  const npprov = withEcosystemUtm(ECOSYSTEM.npprov.href, campaign);
+
   if (variant === 'antagning') {
     return (
       <aside className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-6">
@@ -16,7 +31,7 @@ export function EcosystemCta({ variant = 'full' }: { variant?: Variant }) {
           {ECOSYSTEM.antagningskoll.description}
         </p>
         <a
-          href={ECOSYSTEM.antagningskoll.href}
+          href={antagning}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 inline-block rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700"
@@ -30,24 +45,37 @@ export function EcosystemCta({ variant = 'full' }: { variant?: Variant }) {
   if (variant === 'train') {
     return (
       <aside className="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
-        <h2 className="text-lg font-bold text-slate-900">Träna mer på NP-Monstret</h2>
-        <p className="mt-2 text-sm text-slate-600">{ECOSYSTEM.komvux.description}</p>
+        <h2 className="text-lg font-bold text-slate-900">
+          Behöver du fler ämnen eller personlig plan?
+        </h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Här övar du Matematik 1–3 inför prövning. För bredare träning, komvux
+          och NPcoachen (nästa steg utifrån dina luckor) finns NP-Monstret.
+        </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <a
-            href={ECOSYSTEM.komvux.href}
+            href={npcoachen}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-xl bg-emerald-500 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-600"
           >
-            Komvux-träning
+            NPcoachen
           </a>
           <a
-            href={ECOSYSTEM.npmonstret.href}
+            href={komvux}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            npmonstret.se
+            Komvux-träning
+          </a>
+          <a
+            href={pris}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            Priser
           </a>
         </div>
       </aside>
@@ -59,16 +87,25 @@ export function EcosystemCta({ variant = 'full' }: { variant?: Variant }) {
       <p className="text-sm text-slate-600">
         Kolla behörighet med{' '}
         <a
-          href={ECOSYSTEM.antagningskoll.href}
+          href={antagning}
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium text-emerald-700 underline underline-offset-2"
         >
           NP-Monstrets antagningskoll
         </a>
+        . Personlig plan via{' '}
+        <a
+          href={npcoachen}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-emerald-700 underline underline-offset-2"
+        >
+          NPcoachen
+        </a>
         . Mer träning på{' '}
         <a
-          href={ECOSYSTEM.npmonstret.href}
+          href={monstrets}
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium text-emerald-700 underline underline-offset-2"
@@ -77,7 +114,7 @@ export function EcosystemCta({ variant = 'full' }: { variant?: Variant }) {
         </a>
         . Regler på{' '}
         <a
-          href={ECOSYSTEM.npguide.href}
+          href={npguide}
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium text-emerald-700 underline underline-offset-2"
@@ -86,7 +123,7 @@ export function EcosystemCta({ variant = 'full' }: { variant?: Variant }) {
         </a>
         . NP-arkiv på{' '}
         <a
-          href={ECOSYSTEM.npprov.href}
+          href={npprov}
           target="_blank"
           rel="noopener noreferrer"
           className="font-medium text-emerald-700 underline underline-offset-2"
@@ -107,12 +144,14 @@ export function EcosystemCta({ variant = 'full' }: { variant?: Variant }) {
       </p>
       <ul className="mt-6 grid gap-4 sm:grid-cols-2">
         {[
-          ECOSYSTEM.antagningskoll,
-          ECOSYSTEM.komvux,
-          ECOSYSTEM.npguide,
-          ECOSYSTEM.npprov,
+          { ...ECOSYSTEM.antagningskoll, href: antagning },
+          { ...ECOSYSTEM.npcoachen, href: npcoachen },
+          { ...ECOSYSTEM.komvux, href: komvux },
+          { ...ECOSYSTEM.pris, href: pris },
+          { ...ECOSYSTEM.npguide, href: npguide },
+          { ...ECOSYSTEM.npprov, href: npprov },
         ].map((item) => (
-          <li key={item.href}>
+          <li key={item.label}>
             <a
               href={item.href}
               target="_blank"

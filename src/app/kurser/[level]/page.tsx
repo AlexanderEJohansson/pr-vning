@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AnimateIn } from '@/components/AnimateIn';
 import { EcosystemCta } from '@/components/EcosystemCta';
+import { FaqList } from '@/components/FaqList';
+import { JsonLd, faqPageSchema } from '@/components/JsonLd';
 import { getMathLevel, isMathLevelSlug, MATH_LEVELS } from '@/lib/math-catalog';
-import { ECOSYSTEM } from '@/lib/ecosystem';
+import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
+import { faqByIds, FAQ_KURSER_IDS } from '@/lib/faq-data';
 
 type Props = { params: Promise<{ level: string }> };
 
@@ -26,9 +29,16 @@ export default async function CoursePage({ params }: Props) {
   const { level: slug } = await params;
   if (!isMathLevelSlug(slug)) notFound();
   const level = getMathLevel(slug)!;
+  const levelFaq = faqByIds(FAQ_KURSER_IDS);
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-12">
+      <JsonLd
+        data={faqPageSchema(
+          levelFaq,
+          `https://xn--prvning-b1a.se/kurser/${level.slug}`
+        )}
+      />
       <AnimateIn>
         <nav className="text-sm text-slate-500">
           <Link href="/kurser" className="hover:text-slate-800">
@@ -38,7 +48,7 @@ export default async function CoursePage({ params }: Props) {
           <span className="text-slate-700">{level.name}</span>
         </nav>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
-          {level.name}
+          {level.name} — öva inför prövning
         </h1>
         <p className="mt-3 max-w-2xl text-slate-600">{level.description}</p>
         <p className="mt-2 text-sm text-slate-500">
@@ -47,7 +57,7 @@ export default async function CoursePage({ params }: Props) {
         <p className="mt-3 max-w-2xl text-sm text-slate-600">
           Osäker på om du behöver just {level.name}? Kolla först{' '}
           <a
-            href={ECOSYSTEM.antagningskoll.href}
+            href={withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'kurser-level')}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-emerald-700 underline underline-offset-2"
@@ -139,9 +149,16 @@ export default async function CoursePage({ params }: Props) {
         </div>
       </section>
 
+      <div className="mt-12">
+        <FaqList
+          items={levelFaq}
+          title={`Vanliga frågor inför prövning i ${level.name}`}
+        />
+      </div>
+
       <div className="mt-12 space-y-6">
-        <EcosystemCta variant="antagning" />
-        <EcosystemCta variant="train" />
+        <EcosystemCta variant="antagning" campaign="kurser-level" />
+        <EcosystemCta variant="train" campaign="kurser-level" />
       </div>
     </main>
   );

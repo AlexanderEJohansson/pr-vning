@@ -141,7 +141,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'vad-kravs-program',
     question: 'Hur vet jag vilka mattekurser jag behöver för mitt program?',
     answerText:
-      'Kraven beror på utbildning och antagningsväg. Använd NP-Monstrets antagningskoll för att se vad som brukar krävas, och bekräfta alltid mot den utbildning du söker (till exempel via antagning.se eller lärosätet). När du vet nivån kan du öva matte här eller bredare på NP-Monstret.',
+      'Kraven beror på utbildning och antagningsväg. Använd NP-Monstrets antagningskoll som riktmärke (historiska poäng är inte garanti), och bekräfta alltid mot den utbildning du söker. När du vet nivån kan du öva matte här eller bredare på NP-Monstret.',
     answerParts: [
       {
         type: 'text',
@@ -149,19 +149,19 @@ export const FAQ_ITEMS: FaqItem[] = [
       },
       {
         type: 'link',
-        href: 'https://npmonstret.se/antagningskoll',
+        href: 'https://npmonstret.se/antagningskoll?utm_source=provning&utm_medium=faq&utm_campaign=faq',
         label: 'NP-Monstrets antagningskoll',
         external: true,
       },
       {
         type: 'text',
-        text: ' för att se vad som brukar krävas, och bekräfta alltid mot den utbildning du söker. När du vet nivån: ',
+        text: ' som riktmärke (inte garanti), och bekräfta alltid mot den utbildning du söker. När du vet nivån: ',
       },
       { type: 'link', href: '/kurser', label: 'öva matte här' },
       { type: 'text', text: ' eller träna bredare på ' },
       {
         type: 'link',
-        href: 'https://npmonstret.se/komvux',
+        href: 'https://npmonstret.se/komvux?utm_source=provning&utm_medium=faq&utm_campaign=faq',
         label: 'NP-Monstret komvux',
         external: true,
       },
@@ -277,22 +277,22 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'provning-se-vs-monstret',
     question: 'Vad är skillnaden mellan Prövning.se och NP-Monstret?',
     answerText:
-      'Prövning.se fokuserar på hur prövning fungerar, hur du anmäler dig, och övning i Matematik 1–3 inför prövning. NP-Monstret är en bredare träningsplattform med fler ämnen, komvux-spår och antagningskoll. Använd båda: förstå och anmäl dig här, kolla behörighet och träna mer där.',
+      'Prövning.se: förstå prövning, hur du anmäler dig (lokalt), och övning i Matematik 1–3. NP-Monstret: bredare träning, NPcoachen, antagningskoll och fler ämnen — det enda betalda produkten i ekosystemet. Ingen av sajterna tar emot anmälan eller sätter betyg.',
     answerParts: [
       {
         type: 'text',
-        text: 'Prövning.se fokuserar på hur prövning fungerar, hur du anmäler dig, och övning i Matematik 1–3 inför prövning. NP-Monstret är en bredare träningsplattform med fler ämnen, komvux-spår och ',
+        text: 'Prövning.se: förstå prövning, hur du anmäler dig (lokalt), och övning i Matematik 1–3. NP-Monstret: bredare träning, NPcoachen, ',
       },
       {
         type: 'link',
-        href: 'https://npmonstret.se/antagningskoll',
+        href: 'https://npmonstret.se/antagningskoll?utm_source=provning&utm_medium=faq&utm_campaign=faq',
         label: 'antagningskoll',
         external: true,
       },
-      { type: 'text', text: '. Startsida: ' },
+      { type: 'text', text: ' och fler ämnen. Ingen av sajterna tar emot anmälan. Startsida: ' },
       {
         type: 'link',
-        href: 'https://npmonstret.se',
+        href: 'https://npmonstret.se?utm_source=provning&utm_medium=faq&utm_campaign=faq',
         label: 'npmonstret.se',
         external: true,
       },
@@ -362,6 +362,168 @@ export const FAQ_ITEMS: FaqItem[] = [
     ],
     tags: ['grund'],
   },
+  {
+    id: 'underkand',
+    question: 'Vad händer om jag blir underkänd på prövningen?',
+    answerText:
+      'Du får det betyg som bedömningen ger, inklusive F om du inte når E. Du kan ofta anmäla dig till ny prövning eller läsa kurs — det styrs lokalt. Prövning.se tar inte emot anmälan och sätter inga betyg.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Du får det betyg som bedömningen ger, inklusive F om du inte når E. Du kan ofta anmäla dig till ny prövning eller läsa kurs — det styrs lokalt. Fråga din skola eller kommun. Officiella regler: ',
+      },
+      {
+        type: 'link',
+        href: 'https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/ansvar-i-skolfragor/provning-for-betyg',
+        label: 'Skolverket',
+        external: true,
+      },
+      { type: 'text', text: '.' },
+    ],
+    tags: ['regler'],
+  },
+  {
+    id: 'flera-ganger',
+    question: 'Kan jag pröva samma kurs flera gånger?',
+    answerText:
+      'Ofta ja på komvux, men antal tillfällen, avgift och tider bestäms lokalt. Gymnasieelever har andra begränsningar. Fråga din kommun eller skola innan du planerar omprövning.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Ofta ja på komvux, men antal tillfällen, avgift och tider bestäms lokalt. Gymnasieelever har andra begränsningar. Se ',
+      },
+      { type: 'link', href: '/anmalan', label: 'anmälningsguiden' },
+      { type: 'text', text: ' och din kommuns sida.' },
+    ],
+    tags: ['anmalan'],
+  },
+  {
+    id: 'betyg-tid',
+    question: 'Hur lång tid tar det innan jag får betyg efter prövningen?',
+    answerText:
+      'Det finns ingen nationell deadline som gäller alla. Skolan eller kommunen sätter tidplan för genomförande och betygssättning. Räkna med att det kan ta veckor — fråga vid anmälan.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Det finns ingen nationell deadline som gäller alla. Skolan eller kommunen sätter tidplan. Fråga vid anmälan. Praktiska steg: ',
+      },
+      { type: 'link', href: '/anmalan', label: 'hur du anmäler dig' },
+      { type: 'text', text: '.' },
+    ],
+    tags: ['anmalan'],
+  },
+  {
+    id: 'id-legitimation',
+    question: 'Behöver jag legitimering eller ID vid prövning?',
+    answerText:
+      'Skolan eller kommunen bestämmer vilka identifikationskrav som gäller vid genomförandet. Ta med giltig legitimation om du blir ombedd. Prövning.se hanterar inte incheckning eller ID-kontroll.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Skolan eller kommunen bestämmer vilka identifikationskrav som gäller vid genomförandet. Ta med giltig legitimation om du blir ombedd. Följ den information du får när du anmäler dig via ',
+      },
+      { type: 'link', href: '/anmalan', label: 'kommun eller skola' },
+      { type: 'text', text: '.' },
+    ],
+    tags: ['anmalan'],
+  },
+  {
+    id: 'annan-kommun',
+    question: 'Kan jag pröva i en annan kommun än där jag bor?',
+    answerText:
+      'Ibland — det beror på kommunens och skolans erbjudande. Vissa tar emot sökande från andra kommuner, andra prioriterar boende i kommunen. Kontakta den skola eller komvux där du vill pröva.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Ibland — det beror på kommunens och skolans erbjudande. Kontakta den skola eller komvux där du vill pröva. Börja med ',
+      },
+      { type: 'link', href: '/anmalan', label: 'anmälningsguiden' },
+      { type: 'text', text: ' och sök din kommuns webbplats.' },
+    ],
+    tags: ['anmalan'],
+  },
+  {
+    id: 'npcoachen',
+    question: 'Kan jag använda NPcoachen inför prövning?',
+    answerText:
+      'Ja som frivillig träning. NPcoachen på NP-Monstret bygger nästa träningssteg utifrån quiz-svar och betygsmål. Den ersätter inte prövningen, läraren eller Skolverket. Anmälan sker fortfarande via kommun eller skola — varken Prövning.se eller NP-Monstret tar emot anmälan.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Ja som frivillig träning. ',
+      },
+      {
+        type: 'link',
+        href: 'https://npmonstret.se/npcoachen?utm_source=provning&utm_medium=faq&utm_campaign=faq',
+        label: 'NPcoachen på NP-Monstret',
+        external: true,
+      },
+      {
+        type: 'text',
+        text: ' bygger nästa träningssteg utifrån quiz-svar och betygsmål. Den ersätter inte prövning, lärare eller Skolverket. Anmälan sker via kommun eller skola — se ',
+      },
+      { type: 'link', href: '/anmalan', label: 'anmälan' },
+      { type: 'text', text: '.' },
+    ],
+    tags: ['ovning', 'ekosystem'],
+  },
+  {
+    id: 'vilken-matte',
+    question: 'Vilken mattekurs ska jag pröva — 1, 2 eller 3?',
+    answerText:
+      'Det beror på vad din utbildning kräver. Många högskoleförberedande spår kräver Matematik 2 eller 3. Använd antagningskoll som riktmärke och bekräfta mot programmet du söker. Öva sedan rätt nivå här.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Det beror på vad din utbildning kräver. Använd ',
+      },
+      {
+        type: 'link',
+        href: 'https://npmonstret.se/antagningskoll?utm_source=provning&utm_medium=faq&utm_campaign=faq',
+        label: 'NP-Monstrets antagningskoll',
+        external: true,
+      },
+      {
+        type: 'text',
+        text: ' som riktmärke och bekräfta mot programmet. Öva sedan ',
+      },
+      { type: 'link', href: '/kurser', label: 'Matematik 1–3 här' },
+      { type: 'text', text: '.' },
+    ],
+    tags: ['behorighet', 'ovning'],
+  },
+  {
+    id: 'distans',
+    question: 'Kan jag göra prövning på distans?',
+    answerText:
+      'Det är inte en nationell standard. Vissa skolor erbjuder digitala eller hybridlösningar, men det är lokalt beslut. Fråga den skola eller kommun som anordnar prövningen.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Det är inte en nationell standard. Vissa skolor erbjuder digitala eller hybridlösningar, men det är lokalt beslut. Börja via ',
+      },
+      { type: 'link', href: '/anmalan', label: 'anmälningsguiden' },
+      { type: 'text', text: ' och kontakta anordnaren.' },
+    ],
+    tags: ['anmalan'],
+  },
+  {
+    id: 'np-vs-provning-igen',
+    question: 'Måste jag göra nationella prov om jag gör prövning?',
+    answerText:
+      'Nej — prövning och nationella prov är olika saker. Nationella prov är standardiserade prov under pågående utbildning. Prövning är en separat bedömning mot betygskriterierna för en hel kurs eller nivå. Skolan kan använda olika underlag i bedömningen; det styrs inte av Prövning.se.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Nej — prövning och nationella prov är olika saker. Nationella prov är standardiserade prov under pågående utbildning. Prövning är en separat bedömning mot betygskriterierna. Mer om skillnaden: se FAQ om ',
+      },
+      { type: 'link', href: '/faq', label: 'prövning vs kurs vs NP' },
+      { type: 'text', text: ' och arkiv på ' },
+      { type: 'link', href: 'https://npprov.se', label: 'npprov.se', external: true },
+      { type: 'text', text: '.' },
+    ],
+    tags: ['grund'],
+  },
 ];
 
 export const FAQ_HOME_IDS = [
@@ -373,6 +535,20 @@ export const FAQ_HOME_IDS = [
   'kostar-det',
   'provning-vs-kurs-vs-np',
   'ar-det-officiellt',
+  'vilken-matte',
+  'npcoachen',
+  'underkand',
+  'gy25',
+] as const;
+
+/** FAQ för kursöversikt och level-sidor */
+export const FAQ_KURSER_IDS = [
+  'hur-pluggar-jag',
+  'vilken-matte',
+  'hela-kriterierna',
+  'vad-kravs-program',
+  'npcoachen',
+  'provning-se-vs-monstret',
 ] as const;
 
 export function faqByIds(ids: readonly string[]): FaqItem[] {

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ECOSYSTEM } from '@/lib/ecosystem';
+import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
 
 const internal = [
   { href: '/hoja-betyg', label: 'Höja betyg' },
@@ -11,9 +11,26 @@ const internal = [
 ];
 
 const external = [
-  { href: ECOSYSTEM.antagningskoll.href, label: 'NP-Monstret antagningskoll' },
-  { href: ECOSYSTEM.komvux.href, label: 'NP-Monstret komvux' },
-  { href: ECOSYSTEM.npmonstret.href, label: 'npmonstret.se' },
+  {
+    href: withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'footer'),
+    label: 'NP-Monstret antagningskoll',
+  },
+  {
+    href: withEcosystemUtm(ECOSYSTEM.npcoachen.href, 'footer'),
+    label: 'NPcoachen',
+  },
+  {
+    href: withEcosystemUtm(ECOSYSTEM.komvux.href, 'footer'),
+    label: 'NP-Monstret komvux',
+  },
+  {
+    href: withEcosystemUtm(ECOSYSTEM.pris.href, 'footer'),
+    label: 'NP-Monstret priser',
+  },
+  {
+    href: withEcosystemUtm(ECOSYSTEM.npmonstret.href, 'footer'),
+    label: 'npmonstret.se',
+  },
   { href: ECOSYSTEM.npguide.href, label: 'npguide.se' },
   { href: ECOSYSTEM.npprov.href, label: 'npprov.se' },
   { href: ECOSYSTEM.skolverketProvning.href, label: 'Skolverket prövning' },
