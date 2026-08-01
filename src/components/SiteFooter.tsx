@@ -86,7 +86,8 @@ export function SiteFooter() {
         </div>
         <p className="mt-8 border-t border-slate-100 pt-6 text-xs text-slate-400">
           Officiella regler om prövning finns hos Skolverket. Anmälan och avgifter
-          sköts av din kommun eller skola.
+          sköts av din kommun eller skola. Senast kontrollerad: augusti 2026 · Del av
+          Lärinsikt-ekosystemet (npmonstret.se, npguide.se, npprov.se).
         </p>
       </div>
     </footer>

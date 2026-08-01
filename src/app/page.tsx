@@ -4,7 +4,7 @@ import { AnimateIn } from '@/components/AnimateIn';
 import { CiteMagnet, CITE_MAGNETS } from '@/components/CiteMagnet';
 import { EcosystemCta } from '@/components/EcosystemCta';
 import { FaqList } from '@/components/FaqList';
-import { JsonLd, faqPageSchema, webSiteSchema } from '@/components/JsonLd';
+import { JsonLd, faqPageSchema } from '@/components/JsonLd';
 import { QuickAnswer } from '@/components/QuickAnswer';
 import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
 import { faqByIds, FAQ_HOME_IDS } from '@/lib/faq-data';
@@ -22,7 +22,8 @@ const totalQuestions = MATH_LEVELS.reduce((sum, l) => sum + l.estimatedQuestions
 export default function HomePage() {
   return (
     <main>
-      <JsonLd data={[webSiteSchema(), faqPageSchema(homeFaq, 'https://xn--prvning-b1a.se/')]} />
+      {/* Organization + WebSite i root layout; FAQ endast här */}
+      <JsonLd data={faqPageSchema(homeFaq, 'https://xn--prvning-b1a.se/')} />
 
       <section className="mx-auto max-w-5xl px-4 pb-8 pt-14 sm:pt-16">
         <AnimateIn>

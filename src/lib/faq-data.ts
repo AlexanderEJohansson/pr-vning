@@ -52,7 +52,7 @@ export const FAQ_ITEMS: FaqItem[] = [
       { type: 'text', text: '. För mer träning i NP-format: ' },
       {
         type: 'link',
-        href: 'https://npmonstret.se/komvux',
+        href: 'https://npmonstret.se/komvux?utm_source=provning&utm_medium=faq&utm_campaign=faq',
         label: 'NP-Monstret komvux',
         external: true,
       },
@@ -186,12 +186,17 @@ export const FAQ_ITEMS: FaqItem[] = [
       },
       {
         type: 'link',
-        href: 'https://npmonstret.se',
+        href: 'https://npmonstret.se?utm_source=provning&utm_medium=faq&utm_campaign=faq',
         label: 'NP-Monstret',
         external: true,
       },
       { type: 'text', text: '. För NP-arkiv: ' },
-      { type: 'link', href: 'https://npprov.se', label: 'npprov.se', external: true },
+      {
+        type: 'link',
+        href: 'https://npprov.se/?utm_source=provning&utm_medium=faq&utm_campaign=faq',
+        label: 'npprov.se',
+        external: true,
+      },
       { type: 'text', text: '.' },
     ],
     tags: ['ovning'],

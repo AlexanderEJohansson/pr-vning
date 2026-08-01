@@ -60,6 +60,34 @@ export function howToSchema(opts: {
   };
 }
 
+/** Lärinsikt-ekosystem — sameAs (gemensam knowledge graph). */
+export const ECOSYSTEM_SAME_AS = [
+  'https://npmonstret.se',
+  'https://npmonstret.se/npcoachen',
+  'https://npmonstret.se/antagningskoll',
+  'https://npmonstret.se/for-agents',
+  'https://npguide.se',
+  'https://npprov.se',
+  'https://xn--prvning-b1a.se',
+] as const;
+
+export function organizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Prövning.se',
+    url: 'https://xn--prvning-b1a.se',
+    description:
+      'Oberoende vägledning och matteövning inför prövning för vuxna. Inte Skolverket; tar inte emot anmälan.',
+    parentOrganization: {
+      '@type': 'Organization',
+      name: 'Lärinsikt AB',
+      url: 'https://npmonstret.se',
+    },
+    sameAs: [...ECOSYSTEM_SAME_AS],
+  };
+}
+
 export function webSiteSchema() {
   return {
     '@context': 'https://schema.org',
@@ -69,22 +97,7 @@ export function webSiteSchema() {
     description:
       'Gratis vägledning och övning inför prövning i matematik. För vuxna som vill höja gymnasiebetyg.',
     inLanguage: 'sv-SE',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Prövning.se',
-      url: 'https://xn--prvning-b1a.se',
-      sameAs: [
-        'https://npmonstret.se',
-        'https://npmonstret.se/antagningskoll',
-        'https://npguide.se',
-        'https://npprov.se',
-      ],
-    },
-    sameAs: [
-      'https://npmonstret.se',
-      'https://npmonstret.se/antagningskoll',
-      'https://npguide.se',
-      'https://npprov.se',
-    ],
+    publisher: organizationSchema(),
+    sameAs: [...ECOSYSTEM_SAME_AS],
   };
 }

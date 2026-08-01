@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { JsonLd, organizationSchema, webSiteSchema } from '@/components/JsonLd';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="/llms.txt"
           title="Instructions for AI agents (llms.txt)"
         />
+        <JsonLd data={[organizationSchema(), webSiteSchema()]} />
       </head>
       <body className="flex min-h-screen flex-col bg-slate-50 text-slate-800 antialiased">
         <SiteHeader />
