@@ -31,3 +31,5 @@ next-env.d.ts
 # Curriculum data caches (big PDFs/HTML)
 resources/curriculum/np-pdfs/
 resources/curriculum/data/
+.vercel
+.env*
