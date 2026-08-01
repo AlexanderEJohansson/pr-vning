@@ -1,11 +1,12 @@
 # MEMORY.md — Prövning.se
 
 ## Projekt
-- **Domän:** prövning.se (provning.se redirect)
+- **Domän:** prövning.se (punycode `xn--prvning-b1a.se`)
 - **Repo:** https://github.com/AlexanderEJohansson/pr-vning (master)
-- **Vercel:** auto-deploy från push
+- **Vercel-projekt:** `pr-vning` — production alias https://pr-vning.vercel.app + custom domain
 - **Supabase:** `sfptdiaqmjgznnowyqry` (https://sfptdiaqmjgznnowyqry.supabase.co)
-- **Workspace:** `/home/ubuntu/.openclaw/workspace/provning-se/`
+- **Workspace (lokal):** `/Users/alexanderjohansson/provning.se`
+- **Obs:** `provning.se` (utan ö) är en **annan** sajt — tillhör inte detta projekt.
 
 ## Tech
 - Next.js 15 (App Router) + TypeScript
@@ -84,10 +85,36 @@ supabase/
 ```
 
 ## Build / deploy
-- `pnpm build` fungerar (testat 2026-06-09)
+- `pnpm build` / `npm run build` (testat lokalt + Vercel production 2026-08-01)
 - `tsconfig.json` exkluderar `resources/` + `scripts/` så scraping-koden inte hindrar Vercel-build
 - `.env.local`: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
 - Service role key är `eyJhbG…re3Q`-format (JWT). `sb_secret_…` är publishable, fungerar inte mot RLS-skyddade tabeller.
+- Deploy: push till `master` (GitHub → Vercel) eller `npx vercel --prod` från länkad katalog
+- CLI: `npx vercel link --yes --project pr-vning` (team `alexanderejohanssons-projects`)
+
+## DNS / domän (klart 2026-08-01)
+
+| | |
+|--|--|
+| **Registrar / DNS** | One.com (`ns01.one.com`, `ns02.one.com`) |
+| **Vercel project** | `pr-vning` |
+| **Apex** | `xn--prvning-b1a.se` → prövning.se |
+| **www** | `www.xn--prvning-b1a.se` |
+
+### Egna DNS-poster hos One.com (behåll nameservers på One.com)
+
+| Typ | Host | Värde |
+|-----|------|--------|
+| A | `xn--prvning-b1a.se` (`@`) | `216.150.1.1` |
+| A | `xn--prvning-b1a.se` (`@`) | `216.150.16.1` |
+| CNAME | `www.xn--prvning-b1a.se` | `6f9101bce1152b29.vercel-dns-017.com` |
+
+### One.com-regler
+- **Standard-A** för apex och www måste vara av/borttagna (annars stannar trafik på One.com `46.30.211.38`).
+- **MX** kan stanna kvar (mejl via One.com).
+- Byt **inte** till Vercel-nameservers om ni kör A/CNAME-modellen ovan.
+- Efter DNS-ändring: `npx vercel domains verify xn--prvning-b1a.se` och `… www.xn--prvning-b1a.se`.
+- Verifierat 2026-08-01: Vercel **Valid Configuration** för apex + www; publika resolvers (t.ex. 8.8.8.8) returnerar Vercel A-poster. Lokal cache kan visa gammal One.com-IP en stund; SSL utfärdas när resolver träffar Vercel.
 
 ## DDL via Management API
 - Service-role-nyckeln räcker INTE för DDL via PostgREST (`exec_sql` RPC saknas)
@@ -107,15 +134,15 @@ supabase/
 ## Kvarstående
 - Auth-flöde (Supabase Auth + progress)
 - Progress-sparning per användare
-- DNS: prövning.se → Vercel (sist)
-- Env: `.env.local` med Supabase-nycklar för live-frågor
+- Env: `.env.local` med Supabase-nycklar för live-frågor på Vercel (production env i dashboard)
 - GA4 outbound till npmonstret (när analytics finns)
 
-## Klart (UI + GEO, 2026-07)
+## Klart (UI + GEO + DNS)
 - `AGENTS.md`, övningsflöde Ma1–3
-- GEO: `/anmalan` (HowTo), `/faq` (15 Q), `/kallor`, `/hoja-betyg`, `llms.txt`, sitemap
+- GEO: `/anmalan` (HowTo), `/faq`, `/kallor`, `/hoja-betyg`, `llms.txt`, sitemap
 - Ekosystem-CTA: antagningskoll, komvux, npguide, npprov
-- Reciprokt: npmonstret `/komvux`, npguide footer, npprov EcosystemLinks
+- Reciprokt: npmonstret `/komvux` + antagningskoll, npguide footer/sameAs, npprov EcosystemLinks
+- **DNS 2026-08-01:** prövning.se → Vercel `pr-vning` (A + www CNAME via One.com)
 
 ## Lärdomar
 - **Matteboken.se kräver login sedan ~2025** för att ladda PDF — bypass via Wayback Machine med `id_/`-prefix

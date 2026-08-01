@@ -23,8 +23,12 @@ Ton: vuxen och rak. **Inga emojis** nagonstans (UI, copy, commits).
 5. Efter storre features: kor `/check-work` om tillgangligt
 
 ## DNS / deploy
-- Domän `prövning.se` kopplas sist (One.com → Vercel)
-- Ror inte DNS utan att bli ombedd
+- **Live:** https://prövning.se (punycode `xn--prvning-b1a.se`), www via CNAME
+- **Vercel-projekt:** `pr-vning` (även https://pr-vning.vercel.app)
+- **DNS-host:** One.com (egna A/CNAME, nameservers stannar hos One.com)
+- Apex A: `216.150.1.1` + `216.150.16.1` · www CNAME: `6f9101bce1152b29.vercel-dns-017.com`
+- `provning.se` (utan ö) är **inte** vår domän
+- Rör inte DNS utan att bli ombedd; detaljer i `MEMORY.md` → avsnitt DNS
 
 ## Referens
-Se `MEMORY.md` for databas-state, källor och kvarvarande arbete.
+Se `MEMORY.md` for databas-state, källor, DNS och kvarvarande arbete.
