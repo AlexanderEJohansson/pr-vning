@@ -19,11 +19,11 @@ import { FaqList } from '@/components/FaqList';
 export const metadata: Metadata = {
   title: 'Hur anmäler du dig till prövning?',
   description:
-    'Hur anmäler du dig till prövning för att höja gymnasiebetyg? Steg för steg för vuxna via komvux och gymnasieskola. Skolverket, kommun-exempel och nästa steg.',
+    'Ingen nationell knapp. Anmäl dig via kommunens komvux eller en gymnasieskola. Steg för steg för vuxna — vi tar inte emot anmälan.',
   openGraph: {
     title: 'Hur anmäler du dig till prövning? — Prövning.se',
     description:
-      'Steg-för-steg: hur vuxna anmäler sig till prövning via kommun och gymnasium. Inte en myndighetssajt.',
+      'Steg för vuxna via komvux eller gymnasium. Inte myndighet. Ingen anmälan tas emot här.',
   },
 };
 
@@ -50,7 +50,7 @@ const HOWTO_STEPS = [
   },
   {
     name: 'Öva tills du är redo',
-    text: 'Träna på hela kursens innehåll. Använd Prövning.se för Matematik 1–3 och NP-Monstret för mer träning.',
+    text: 'Träna hela kursen. Matematik 1–3 kan du öva här; behöver du fler ämnen finns NPcoachen.',
   },
 ];
 
@@ -169,7 +169,7 @@ export default function AnmalanPage() {
                       rel="noopener noreferrer"
                       className="text-emerald-700 underline underline-offset-2"
                     >
-                      NPcoachen på NP-Monstret
+                      Mer träning (NPcoachen)
                     </a>
                     <a
                       href={withEcosystemUtm(ECOSYSTEM.komvux.href, 'anmalan')}

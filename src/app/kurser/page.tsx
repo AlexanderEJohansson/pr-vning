@@ -11,7 +11,7 @@ import { faqByIds, FAQ_KURSER_IDS } from '@/lib/faq-data';
 export const metadata: Metadata = {
   title: 'Öva Matematik 1–3 inför prövning',
   description:
-    'Välj Matematik 1, 2 eller 3 och öva inför prövning på komvux. Gratis frågebank för vuxna som vill höja betyg.',
+    'Gratis övning i Matematik 1, 2 och 3 inför prövning eller uppskrivning. För vuxna. Ingen anmälan tas emot här.',
 };
 
 const kurserFaq = faqByIds(FAQ_KURSER_IDS);
@@ -22,11 +22,11 @@ export default function KurserPage() {
       <JsonLd data={faqPageSchema(kurserFaq, 'https://xn--prvning-b1a.se/kurser')} />
       <AnimateIn>
         <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-          Öva Matematik 1–3 inför prövning
+          Matematik 1–3 — öva inför prövning
         </h1>
         <p className="mt-3 max-w-2xl text-slate-600">
-          Välj den mattekurs du ska pröva eller läsa upp. Du kan filtrera på variant
-          (1a, 2b, 3c …) och ämnesområde när du startar övningen.
+          Välj kursnivå. Variant (1a, 2b, 3c …) och område kan du filtrera när du
+          startar.
         </p>
       </AnimateIn>
 
@@ -83,15 +83,14 @@ export default function KurserPage() {
           </li>
         </ul>
         <p className="mt-3 text-sm text-slate-500">
-          Osäker? Börja utan filter — du får blandade uppgifter och kan snäva in senare.
-          Behöver du fler ämnen eller komvux-träning?{' '}
+          Osäker? Börja utan filter. Fler ämnen eller personlig plan:{' '}
           <a
-            href={withEcosystemUtm(ECOSYSTEM.komvux.href, 'kurser')}
+            href={withEcosystemUtm(ECOSYSTEM.npcoachen.href, 'kurser')}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-emerald-700 underline underline-offset-2"
           >
-            NP-Monstret komvux
+            NPcoachen
           </a>
           .
         </p>

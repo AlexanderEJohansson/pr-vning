@@ -12,7 +12,7 @@ import { faqByIds } from '@/lib/faq-data';
 export const metadata: Metadata = {
   title: 'Så höjer du gymnasiebetyg som vuxen',
   description:
-    'Så höjer du gymnasiebetyg som vuxen: prövning, komvux, behörighet och träning. Stegvis guide med antagningskoll och övning i matematik.',
+    'Prövning eller läsa kurs, anmälan lokalt, och övning. Kort steg-för-steg för dig som vill komplettera gymnasiebetyg.',
 };
 
 const PAGE_URL = 'https://xn--prvning-b1a.se/hoja-betyg';
@@ -50,8 +50,8 @@ export default function HojaBetygPage() {
           <span className="mx-2">/</span>
           <span className="text-slate-700">Höja betyg</span>
         </nav>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
-          Så höjer du gymnasiebetyg som vuxen
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 text-balance">
+          Höja gymnasiebetyg som vuxen
         </h1>
       </AnimateIn>
 
@@ -59,18 +59,18 @@ export default function HojaBetygPage() {
         <CiteMagnet text={CITE_MAGNETS.hoja} />
         <QuickAnswer>
           <p>
-            Börja med att veta <strong>vad du behöver</strong> för din utbildning, välj
-            sedan <strong>prövning eller läsa kurs</strong>, anmäl dig lokalt, och öva
-            systematiskt. Använd{' '}
+            Kolla först <strong>vad utbildningen kräver</strong>, välj sedan
+            prövning eller kurs, anmäl dig hos kommun eller skola, och öva hela
+            innehållet. Behörighet:{' '}
             <a
               href={withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'hoja-betyg')}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-emerald-800 underline underline-offset-2"
             >
-              NP-Monstrets antagningskoll
-            </a>{' '}
-            för behörighet — och Prövning.se för att förstå prövning och öva matte.
+              antagningskoll
+            </a>
+            . Matte 1–3 övar du här.
           </p>
         </QuickAnswer>
       </div>
@@ -128,14 +128,14 @@ export default function HojaBetygPage() {
                 <Link href="/kurser" className="font-medium text-emerald-700 underline underline-offset-2">
                   Matematik 1–3 här
                 </Link>
-                , och träna mer på{' '}
+                . Behöver du fler ämnen:{' '}
                 <a
-                  href={withEcosystemUtm(ECOSYSTEM.komvux.href, 'hoja-betyg')}
+                  href={withEcosystemUtm(ECOSYSTEM.npcoachen.href, 'hoja-betyg')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-medium text-emerald-700 underline underline-offset-2"
                 >
-                  NP-Monstret komvux
+                  NPcoachen
                 </a>
                 .
               </>
@@ -155,7 +155,6 @@ export default function HojaBetygPage() {
       <div className="mt-10 space-y-6">
         <EcosystemCta variant="antagning" campaign="hoja-betyg" />
         <EcosystemCta variant="train" campaign="hoja-betyg" />
-        <EcosystemCta variant="full" campaign="hoja-betyg" />
       </div>
 
       <div className="mt-12">
