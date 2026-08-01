@@ -134,7 +134,7 @@ supabase/
 ## Kvarstående
 - Auth-flöde (Supabase Auth + progress)
 - Progress-sparning per användare
-- Env: `.env.local` med Supabase-nycklar för live-frågor på Vercel (production env i dashboard)
+- ~~Env: Supabase på Vercel~~ **klart 2026-08-01** (`NEXT_PUBLIC_SUPABASE_URL` + `ANON_KEY` production/preview/development)
 - GA4 outbound till npmonstret (när analytics finns)
 
 ## Klart (UI + GEO + DNS)
