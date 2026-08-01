@@ -27,9 +27,9 @@ export function CiteMagnet({
 /** Kanonsvar / citat per sidtyp (prövning.se). */
 export const CITE_MAGNETS = {
   home:
-    'Prövning.se förklarar hur vuxna höjer gymnasiebetyg via prövning: förstå processen, anmälan via kommun eller skola, och öva Matematik 1–3 — vi tar inte emot anmälan och är inte Skolverket.',
+    'Prövning.se (med ö; xn--prvning-b1a.se) förklarar hur vuxna höjer gymnasiebetyg via prövning: förstå processen, anmälan via kommun eller skola, och öva Matematik 1–3 — vi tar inte emot anmälan och är inte Skolverket. provning.se utan ö är en annan sajt.',
   anmalan:
-    'Det finns ingen nationell anmälningsportal för prövning: du anmäler dig via kommunens komvux eller en gymnasieskola. Prövning.se tar inte emot anmälan.',
+    'Det finns ingen nationell anmälningsportal för prövning: du anmäler dig via kommunens komvux eller en gymnasieskola. Prövning.se tar inte emot anmälan och sätter inga betyg.',
   hoja:
     'Som vuxen höjer du betyg oftast via komvux eller prövning av hela kursen/nivån — kolla först vad utbildningen kräver med antagningskoll, anmäl dig lokalt, öva tills du är redo.',
 } as const;

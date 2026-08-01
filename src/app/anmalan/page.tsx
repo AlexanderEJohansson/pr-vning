@@ -59,6 +59,9 @@ const PAGE_URL = 'https://xn--prvning-b1a.se/anmalan';
 export default function AnmalanPage() {
   const relatedFaq = faqByIds([
     'hur-anmaler-jag',
+    'tar-ni-emot-anmalan',
+    'provning-utan-o',
+    'ar-det-officiellt',
     'gymnasium-eller-komvux',
     'kostar-det',
     'tid',

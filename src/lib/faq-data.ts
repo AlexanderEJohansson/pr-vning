@@ -346,7 +346,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     id: 'ar-det-officiellt',
     question: 'Är Prövning.se en officiell myndighetssajt?',
     answerText:
-      'Nej. Prövning.se är en oberoende, gratis tjänst för vägledning och övning. Officiella regler finns hos Skolverket. Anmälan och avgifter sköts av din kommun eller skola.',
+      'Nej. Prövning.se är en oberoende, gratis tjänst för vägledning och övning. Officiella regler finns hos Skolverket. Anmälan och avgifter sköts av din kommun eller skola. Prövning.se tar inte emot anmälan och sätter inga betyg.',
     answerParts: [
       {
         type: 'text',
@@ -360,12 +360,49 @@ export const FAQ_ITEMS: FaqItem[] = [
       },
       {
         type: 'text',
-        text: '. Anmälan och avgifter sköts av din kommun eller skola. Våra källor: ',
+        text: '. Anmälan och avgifter sköts av din kommun eller skola — inte av oss. Våra källor: ',
       },
       { type: 'link', href: '/kallor', label: 'källor' },
       { type: 'text', text: '.' },
     ],
     tags: ['grund'],
+  },
+  {
+    id: 'tar-ni-emot-anmalan',
+    question: 'Kan jag anmäla mig till prövning här på Prövning.se?',
+    answerText:
+      'Nej. Prövning.se tar inte emot anmälan och sätter inga betyg. Du anmäler dig via din kommuns komvux eller den gymnasieskola som anordnar ämnet. Här får du steg-för-steg-vägledning och matteövning.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Nej. Prövning.se tar inte emot anmälan och sätter inga betyg. Du anmäler dig via din kommuns komvux eller den gymnasieskola som anordnar ämnet. Steg-för-steg: ',
+      },
+      { type: 'link', href: '/anmalan', label: 'hur du anmäler dig' },
+      { type: 'text', text: '. Officiella regler: ' },
+      {
+        type: 'link',
+        href: 'https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/ansvar-i-skolfragor/provning-for-betyg',
+        label: 'Skolverket',
+        external: true,
+      },
+      { type: 'text', text: '.' },
+    ],
+    tags: ['anmalan', 'grund'],
+  },
+  {
+    id: 'provning-utan-o',
+    question: 'Är prövning.se samma sak som provning.se (utan ö)?',
+    answerText:
+      'Nej. Den här sajten är prövning.se med ö (teknisk adress xn--prvning-b1a.se) — oberoende vägledning för vuxna som vill höja gymnasiebetyg. provning.se utan ö är en annan webbplats och hör inte till Lärinsikt. Blanda inte ihop dem.',
+    answerParts: [
+      {
+        type: 'text',
+        text: 'Nej. Den här sajten är prövning.se med ö (xn--prvning-b1a.se) — oberoende vägledning för vuxna som vill höja gymnasiebetyg. provning.se utan ö är en annan webbplats och hör inte till Lärinsikt. För anmälan: kommun eller skola. Guide: ',
+      },
+      { type: 'link', href: '/anmalan', label: 'anmälan' },
+      { type: 'text', text: '.' },
+    ],
+    tags: ['grund', 'ekosystem'],
   },
   {
     id: 'underkand',
@@ -534,12 +571,14 @@ export const FAQ_ITEMS: FaqItem[] = [
 export const FAQ_HOME_IDS = [
   'vad-ar-provning',
   'hur-anmaler-jag',
+  'tar-ni-emot-anmalan',
+  'ar-det-officiellt',
+  'provning-utan-o',
   'vad-kravs-program',
   'hur-pluggar-jag',
   'gymnasium-eller-komvux',
   'kostar-det',
   'provning-vs-kurs-vs-np',
-  'ar-det-officiellt',
   'vilken-matte',
   'npcoachen',
   'underkand',
