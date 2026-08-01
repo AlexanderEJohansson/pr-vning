@@ -99,23 +99,24 @@ _Lästes vid varje ny session. Efter first run, radera denna fil._
 ## Workspace
 
 ```
-/home/ubuntu/.openclaw/workspace/provning-se/   ← all kod här
+/Users/alexanderjohansson/provning.se   ← lokal workspace
 ```
 
 **Egna filer för projektet:**
-- `MEMORY.md` (långsiktig minne för detta projekt)
-- `SPEC.md` (Alexander skriver, jag bekräftar)
+- `MEMORY.md` (långsiktig minne — inkl. DNS)
+- `AGENTS.md` (agentregler)
 - `supabase/migrations/` (egna migrationer)
-- `.env.local` (kommer när Supabase-nyckel är klar)
+- `.env.local` (Supabase-nycklar lokalt; sätt motsvarande i Vercel)
 
 ---
 
-## Credentials (待)
+## Credentials / infra (status 2026-08)
 
-- [ ] Supabase: behöver nyckel
-- [ ] Vercel: behöver access
-- [ ] GitHub: behöver PAT för nytt repo
+- [x] GitHub: https://github.com/AlexanderEJohansson/pr-vning
+- [x] Vercel: projekt `pr-vning`, production live
+- [x] DNS: prövning.se → Vercel via One.com A/CNAME (se MEMORY.md)
+- [ ] Supabase production env på Vercel (URL + anon/service keys)
 
 ---
 
-_Radera denna fil efter first run när MEMORY.md är uppdaterad._
+_Radera gärna denna fil när den inte längre behövs; MEMORY.md är kanonisk._
