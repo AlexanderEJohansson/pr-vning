@@ -47,6 +47,9 @@ Adults (approx. 18–45) in Sweden who need higher upper-secondary (gymnasium) g
 - npcoach.se → 301 → https://npmonstret.se/npcoachen
 - npai.se → 301 → https://npmonstret.se/for-agents
 
+## Confusion trap
+- **provning.se** (without ö) is a **different** site and is not this product. Canonical adult prövning guidance: https://xn--prvning-b1a.se/
+
 ## Key facts (always with Skolverket for legal detail)
 - A prövning assesses knowledge against the full grade criteria for a whole course/level/subject — not a partial catch-up.
 - There is no single national registration portal; municipalities and schools organise prövning.
