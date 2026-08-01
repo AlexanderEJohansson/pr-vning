@@ -13,7 +13,7 @@ import { MATH_LEVELS } from '@/lib/math-catalog';
 export const metadata: Metadata = {
   title: 'Prövning.se — Höj gymnasiebetyg, anmäl dig och öva matte',
   description:
-    'För vuxna som vill höja gymnasiebetyg: förstå prövning, anmäla dig via kommun eller gymnasium, kolla behörighet och öva Matematik 1–3 gratis.',
+    'Vuxen och vill höja gymnasiebetyg? Förklaring av prövning, hur anmälan funkar via kommun eller skola, och gratis övning i Matematik 1–3. Inte Skolverket.',
 };
 
 const homeFaq = faqByIds(FAQ_HOME_IDS);
@@ -27,16 +27,16 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-5xl px-4 pb-8 pt-14 sm:pt-16">
         <AnimateIn>
-          <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600">
-            Vuxna · höja betyg · prövning · komvux
+          <p className="text-sm font-semibold tracking-wide text-emerald-700">
+            För dig som är vuxen och vill höja betyg
           </p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-            Höj gymnasiebetyg — förstå prövning, anmäl dig rätt, öva matte
+          <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl text-balance">
+            Prövning, anmälan och matteövning — på ett ställe
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
-            Gratis vägledning för dig som vill komplettera eller höja betyg som vuxen.
-            Vi förklarar prövning på vuxenspråk, visar hur anmälan funkar via kommun och
-            gymnasium, och ger dig övning i Matematik 1–3.
+            Vi förklarar hur prövning funkar, var du anmäler dig (kommun eller skola)
+            och låter dig öva Matematik 1–3 gratis. Vi tar inte emot anmälan och är
+            inte Skolverket.
           </p>
         </AnimateIn>
 

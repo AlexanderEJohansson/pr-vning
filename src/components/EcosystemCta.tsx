@@ -135,28 +135,37 @@ export function EcosystemCta({
     );
   }
 
+  // Full: max tre syskon-länkar med tydlig roll (undvik länkspam)
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
-      <h2 className="text-lg font-bold text-slate-900">Samma ekosystem — olika roller</h2>
+      <h2 className="text-lg font-bold text-slate-900">När du behöver något annat</h2>
       <p className="mt-2 text-sm text-slate-600">
-        Prövning.se hjälper dig förstå prövning, anmäla dig rätt och öva matte. De andra
-        sajterna tar vid där det passar dig.
+        Här: prövning och matte 1–3. Andra sajter i samma ekosystem fyller andra behov.
       </p>
-      <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+      <ul className="mt-6 grid gap-4 sm:grid-cols-3">
         {[
-          { ...ECOSYSTEM.antagningskoll, href: antagning },
-          { ...ECOSYSTEM.npcoachen, href: npcoachen },
-          { ...ECOSYSTEM.komvux, href: komvux },
-          { ...ECOSYSTEM.pris, href: pris },
-          { ...ECOSYSTEM.npguide, href: npguide },
-          { ...ECOSYSTEM.npprov, href: npprov },
+          {
+            href: antagning,
+            label: 'Antagningskoll',
+            description: 'Vad som brukar krävas till olika utbildningar.',
+          },
+          {
+            href: npcoachen,
+            label: 'NPcoachen',
+            description: 'Personlig träning i fler ämnen och årskurser.',
+          },
+          {
+            href: npguide,
+            label: 'NP-guide',
+            description: 'Regler och skolpersonal — om du jobbar i skolan.',
+          },
         ].map((item) => (
           <li key={item.label}>
             <a
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-xl border border-slate-100 p-4 transition hover:border-emerald-200 hover:bg-emerald-50/40"
+              className="block h-full rounded-xl border border-slate-100 p-4 transition hover:border-emerald-200 hover:bg-emerald-50/40"
             >
               <span className="font-semibold text-emerald-800">{item.label}</span>
               <span className="mt-1 block text-sm text-slate-600">{item.description}</span>
@@ -164,6 +173,17 @@ export function EcosystemCta({
           </li>
         ))}
       </ul>
+      <p className="mt-4 text-xs text-slate-500">
+        Provarkiv med källa:{' '}
+        <a href={npprov} target="_blank" rel="noopener noreferrer" className="underline">
+          npprov.se
+        </a>
+        . Priser för bredare träning:{' '}
+        <a href={pris} target="_blank" rel="noopener noreferrer" className="underline">
+          npmonstret.se/pris
+        </a>
+        .
+      </p>
     </section>
   );
 }

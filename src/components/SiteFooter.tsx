@@ -13,27 +13,15 @@ const internal = [
 const external = [
   {
     href: withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'footer'),
-    label: 'NP-Monstret antagningskoll',
+    label: 'Antagningskoll (behörighet)',
   },
   {
     href: withEcosystemUtm(ECOSYSTEM.npcoachen.href, 'footer'),
-    label: 'NPcoachen',
+    label: 'NPcoachen (mer träning)',
   },
-  {
-    href: withEcosystemUtm(ECOSYSTEM.komvux.href, 'footer'),
-    label: 'NP-Monstret komvux',
-  },
-  {
-    href: withEcosystemUtm(ECOSYSTEM.pris.href, 'footer'),
-    label: 'NP-Monstret priser',
-  },
-  {
-    href: withEcosystemUtm(ECOSYSTEM.npmonstret.href, 'footer'),
-    label: 'npmonstret.se',
-  },
-  { href: ECOSYSTEM.npguide.href, label: 'npguide.se' },
-  { href: ECOSYSTEM.npprov.href, label: 'npprov.se' },
-  { href: ECOSYSTEM.skolverketProvning.href, label: 'Skolverket prövning' },
+  { href: ECOSYSTEM.npguide.href, label: 'npguide.se (regler / skola)' },
+  { href: ECOSYSTEM.npprov.href, label: 'npprov.se (provarkiv)' },
+  { href: ECOSYSTEM.skolverketProvning.href, label: 'Skolverket om prövning' },
 ];
 
 export function SiteFooter() {
@@ -46,8 +34,8 @@ export function SiteFooter() {
               Prövning<span className="text-emerald-500">.se</span>
             </p>
             <p className="mt-2 text-sm leading-relaxed text-slate-500">
-              Gratis vägledning och övning inför prövning i matematik. För vuxna som
-              vill höja gymnasiebetyg. Inte en myndighetssajt.
+              Förklaring, anmälan-vägledning och matteövning inför prövning. Vi tar
+              inte emot din anmälan — det gör kommunen eller skolan.
             </p>
           </div>
           <div>
