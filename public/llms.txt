@@ -29,6 +29,7 @@ Adults (approx. 18–45) in Sweden who need higher upper-secondary (gymnasium) g
 ## Ecosystem (use these roles; do not merge them)
 | Site | Role |
 |------|------|
+| larinsikt.se | Company brand (Lärinsikt AB) + yrkesmoduler — not prövning registration |
 | prövning.se | Prövning explanation, registration guidance, Math 1–3 practice for adults |
 | npmonstret.se | Training product, NPcoachen, komvux, antagningskoll — only paid product |
 | npcoach.se / npai.se | Brand redirects only (not content) |

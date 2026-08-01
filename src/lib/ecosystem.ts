@@ -74,6 +74,12 @@ export const ECOSYSTEM = {
     short: 'npprov.se',
     description: 'Arkiv och proveniens för nationella prov.',
   },
+  larinsikt: {
+    href: 'https://larinsikt.se',
+    label: 'Lärinsikt AB',
+    short: 'Lärinsikt',
+    description: 'Bolaget bakom ekosystemet. Yrkesmoduler för service och bemötande i skolan.',
+  },
   skolverketProvning: {
     href: 'https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/ansvar-i-skolfragor/provning-for-betyg',
     label: 'Skolverket: Prövning för betyg',

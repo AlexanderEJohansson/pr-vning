@@ -12,6 +12,10 @@ const internal = [
 
 const external = [
   {
+    href: withEcosystemUtm(ECOSYSTEM.larinsikt.href, 'footer'),
+    label: 'Lärinsikt AB (bolag)',
+  },
+  {
     href: withEcosystemUtm(ECOSYSTEM.antagningskoll.href, 'footer'),
     label: 'Antagningskoll (behörighet)',
   },
@@ -74,8 +78,16 @@ export function SiteFooter() {
         </div>
         <p className="mt-8 border-t border-slate-100 pt-6 text-xs text-slate-400">
           Officiella regler om prövning finns hos Skolverket. Anmälan och avgifter
-          sköts av din kommun eller skola. Senast kontrollerad: augusti 2026 · Del av
-          Lärinsikt-ekosystemet (npmonstret.se, npguide.se, npprov.se).
+          sköts av din kommun eller skola. Senast kontrollerad: augusti 2026 · Bolag:{' '}
+          <a
+            href={withEcosystemUtm(ECOSYSTEM.larinsikt.href, 'footer')}
+            className="underline hover:text-slate-600"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Lärinsikt AB
+          </a>
+          .
         </p>
       </div>
     </footer>

@@ -62,6 +62,7 @@ export function howToSchema(opts: {
 
 /** Lärinsikt-ekosystem — sameAs (gemensam knowledge graph). */
 export const ECOSYSTEM_SAME_AS = [
+  'https://larinsikt.se',
   'https://npmonstret.se',
   'https://npmonstret.se/npcoachen',
   'https://npmonstret.se/antagningskoll',
@@ -82,7 +83,7 @@ export function organizationSchema() {
     parentOrganization: {
       '@type': 'Organization',
       name: 'Lärinsikt AB',
-      url: 'https://npmonstret.se',
+      url: 'https://larinsikt.se',
     },
     sameAs: [...ECOSYSTEM_SAME_AS],
   };
