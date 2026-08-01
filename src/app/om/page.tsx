@@ -11,7 +11,7 @@ import { sourceById } from '@/lib/sources';
 export const metadata: Metadata = {
   title: 'Om prövning och Prövning.se',
   description:
-    'Vad är prövning för betyg? Hur funkar Prövning.se? För vuxna som vill höja gymnasiebetyg via komvux eller gymnasiet.',
+    'Vad prövning för betyg innebär, hur Prövning.se hjälper dig, och vad vi inte är. För vuxna som vill höja gymnasiebetyg.',
 };
 
 export default function OmPage() {
@@ -31,19 +31,17 @@ export default function OmPage() {
       />
 
       <AnimateIn>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-          Om prövning och Prövning.se
+        <h1 className="text-3xl font-bold tracking-tight text-slate-900 text-balance">
+          Om prövning — och den här sajten
         </h1>
       </AnimateIn>
 
       <div className="mt-6">
         <QuickAnswer>
           <p>
-            En prövning är en bedömning av dina kunskaper mot{' '}
-            <strong>hela</strong> betygskriterierna i en kurs eller nivå. Prövning.se
-            är en oberoende, gratis sajt som förklarar hur det funkar, hur du anmäler
-            dig, och låter dig öva matematik — vi är inte Skolverket och tar inte emot
-            anmälan.
+            En prövning bedömer dig mot <strong>hela</strong> betygskriterierna i en
+            kurs eller nivå. Här får du förklaring, anmälningsväg och matteövning.
+            Vi tar inte emot anmälan. Vi är inte Skolverket.
           </p>
         </QuickAnswer>
       </div>
