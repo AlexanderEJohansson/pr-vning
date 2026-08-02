@@ -9,7 +9,7 @@ import { ECOSYSTEM, withEcosystemUtm } from '@/lib/ecosystem';
 import { faqByIds, FAQ_KURSER_IDS } from '@/lib/faq-data';
 
 export const metadata: Metadata = {
-  title: 'Öva Matematik 1–3 inför prövning',
+  title: 'Matematik 1–3 — gratis övning inför prövning (inte anmälan)',
   description:
     'Gratis övning i Matematik 1, 2 och 3 inför prövning eller uppskrivning. För vuxna. Ingen anmälan tas emot här.',
 };
