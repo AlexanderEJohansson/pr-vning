@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const links = [
   { href: '/hoja-betyg', label: 'Höja betyg' },
-  { href: '/anmalan', label: 'Anmälan' },
+  { href: '/anmalan', label: 'Anmälan-guide' },
   { href: '/kurser', label: 'Kurser' },
   { href: '/faq', label: 'FAQ' },
 ];

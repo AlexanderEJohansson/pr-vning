@@ -7,18 +7,19 @@ import { SiteFooter } from '@/components/SiteFooter';
 export const metadata: Metadata = {
   metadataBase: new URL('https://xn--prvning-b1a.se'),
   title: {
-    default: 'Prövning.se — Höj gymnasiebetyg, anmäl dig och öva matte',
+    default:
+      'Prövning.se — Vägledning för vuxna: prövning, anmälan via kommun & Matte 1–3',
     template: '%s | Prövning.se',
   },
   description:
-    'För vuxna som vill höja gymnasiebetyg: förstå prövning, anmäla dig via kommun eller gymnasium, kolla behörighet och öva Matematik 1–3 gratis.',
+    'För vuxna som vill höja gymnasiebetyg: förstå prövning, hur du anmäler dig via kommun eller skola (vi tar inte emot anmälan), och öva Matematik 1–3 gratis. Inte Skolverket.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Prövning.se — Höj gymnasiebetyg via prövning',
+    title: 'Prövning.se — Vägledning om prövning (inte anmälningsportal)',
     description:
-      'Anmälan, vanliga frågor och gratis övning i Matematik 1–3. Inte en myndighetssajt — officiella regler hos Skolverket.',
+      'Hur prövning funkar, anmälan via kommun/skola, FAQ och gratis Matematik 1–3. Vi tar inte emot anmälan. Regler: Skolverket.',
     locale: 'sv_SE',
     type: 'website',
     url: 'https://xn--prvning-b1a.se',

@@ -11,9 +11,10 @@ import { faqByIds, FAQ_HOME_IDS } from '@/lib/faq-data';
 import { MATH_LEVELS } from '@/lib/math-catalog';
 
 export const metadata: Metadata = {
-  title: 'Prövning.se — Höj gymnasiebetyg, anmäl dig och öva matte',
+  title:
+    'Prövning.se — Vägledning för vuxna: prövning, anmälan via kommun & Matte 1–3',
   description:
-    'Vuxen och vill höja gymnasiebetyg? Förklaring av prövning, hur anmälan funkar via kommun eller skola, och gratis övning i Matematik 1–3. Inte Skolverket.',
+    'Vuxen och vill höja gymnasiebetyg? Förklaring av prövning, hur anmälan funkar via kommun eller skola (vi tar inte emot anmälan), och gratis övning i Matematik 1–3. Inte Skolverket.',
 };
 
 const homeFaq = faqByIds(FAQ_HOME_IDS);
@@ -31,7 +32,7 @@ export default function HomePage() {
             För dig som är vuxen och vill höja betyg
           </p>
           <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl text-balance">
-            Prövning, anmälan och matteövning — på ett ställe
+            Förstå prövning, hitta rätt anmälan och öva matte
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
             Vi förklarar hur prövning funkar, var du anmäler dig (kommun eller skola)
