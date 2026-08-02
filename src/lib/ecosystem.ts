@@ -30,19 +30,27 @@ export const ECOSYSTEM = {
     href: 'https://npmonstret.se',
     label: 'NP-Monstret',
     short: 'NP-Monstret',
-    description: 'Träna mer — fler ämnen, komvux och nationella prov.',
+    description:
+      'Enda betalprodukten i Lärinsikt-ekosystemet — fler ämnen, komvux och NP-träning.',
   },
   npcoachen: {
     href: 'https://npmonstret.se/npcoachen',
     label: 'NPcoachen',
     short: 'NPcoachen',
-    description: 'Personlig träningsloop utifrån dina luckor och betygsmål.',
+    description:
+      'Personlig träningsloop utifrån dina luckor och betygsmål (på NP-Monstret).',
+  },
+  register: {
+    href: 'https://npmonstret.se/register',
+    label: 'Skapa konto på NP-Monstret',
+    short: 'Kom igång',
+    description: 'Frivilligt konto för bredare träning — ersätter inte prövning eller anmälan.',
   },
   pris: {
     href: 'https://npmonstret.se/pris',
     label: 'Priser på NP-Monstret',
     short: 'Priser',
-    description: 'Vecka 19 kr, Bas 49 kr/mån, Premium 99 kr/mån.',
+    description: 'Vecka 19 kr, Bas 49 kr/mån, Premium 99 kr/mån — enda kassan.',
   },
   komvux: {
     href: 'https://npmonstret.se/komvux',

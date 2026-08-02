@@ -15,6 +15,7 @@ export function EcosystemCta({
   const monstrets = withEcosystemUtm(ECOSYSTEM.npmonstret.href, campaign);
   const npcoachen = withEcosystemUtm(ECOSYSTEM.npcoachen.href, campaign);
   const pris = withEcosystemUtm(ECOSYSTEM.pris.href, campaign);
+  const register = withEcosystemUtm(ECOSYSTEM.register.href, campaign);
   const npguide = withEcosystemUtm(ECOSYSTEM.npguide.href, campaign);
   const npprov = withEcosystemUtm(ECOSYSTEM.npprov.href, campaign);
 
@@ -62,6 +63,14 @@ export function EcosystemCta({
             NPcoachen
           </a>
           <a
+            href={register}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Kom igång (NP-Monstret)
+          </a>
+          <a
             href={komvux}
             target="_blank"
             rel="noopener noreferrer"
@@ -78,6 +87,9 @@ export function EcosystemCta({
             Priser
           </a>
         </div>
+        <p className="mt-3 text-xs text-slate-500">
+          NP-Monstret ersätter inte prövning eller anmälan via kommun/skola.
+        </p>
       </aside>
     );
   }
