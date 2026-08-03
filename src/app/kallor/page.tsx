@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: 'Källor',
   description:
     'Verifierade källor bakom Prövning.se: Skolverket, lag, kommun-exempel och länkar till NP-Monstret, NP-guide och npprov.se.',
+  alternates: { canonical: 'https://xn--prvning-b1a.se/kallor' },
+  openGraph: { url: 'https://xn--prvning-b1a.se/kallor' },
 };
 
 export default function KallorPage() {

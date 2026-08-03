@@ -13,16 +13,13 @@ export const metadata: Metadata = {
   },
   description:
     'För vuxna som vill höja gymnasiebetyg: förstå prövning, hur du anmäler dig via kommun eller skola (vi tar inte emot anmälan), och öva Matematik 1–3 gratis. Inte Skolverket.',
-  alternates: {
-    canonical: '/',
-  },
+  // Per-page canonicals only — never force '/' on all routes
   openGraph: {
     title: 'Prövning.se — Vägledning om prövning (inte anmälningsportal)',
     description:
       'Hur prövning funkar, anmälan via kommun/skola, FAQ och gratis Matematik 1–3. Vi tar inte emot anmälan. Regler: Skolverket.',
     locale: 'sv_SE',
     type: 'website',
-    url: 'https://xn--prvning-b1a.se',
     siteName: 'Prövning.se',
   },
   robots: {

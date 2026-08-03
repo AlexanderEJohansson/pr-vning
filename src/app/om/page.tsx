@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   title: 'Om prövning och Prövning.se',
   description:
     'Vad prövning för betyg innebär, hur Prövning.se hjälper dig, och vad vi inte är. För vuxna som vill höja gymnasiebetyg.',
+  alternates: { canonical: 'https://xn--prvning-b1a.se/om' },
+  openGraph: { url: 'https://xn--prvning-b1a.se/om' },
 };
 
 export default function OmPage() {

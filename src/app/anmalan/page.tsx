@@ -20,10 +20,12 @@ export const metadata: Metadata = {
   title: 'Hur anmäler du dig till prövning?',
   description:
     'Ingen nationell knapp. Anmäl dig via kommunens komvux eller en gymnasieskola. Steg för steg för vuxna — vi tar inte emot anmälan.',
+  alternates: { canonical: 'https://xn--prvning-b1a.se/anmalan' },
   openGraph: {
     title: 'Hur anmäler du dig till prövning? — Prövning.se',
     description:
       'Steg för vuxna via komvux eller gymnasium. Inte myndighet. Ingen anmälan tas emot här.',
+    url: 'https://xn--prvning-b1a.se/anmalan',
   },
 };
 

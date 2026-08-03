@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   title: 'Matematik 1–3 — gratis övning inför prövning (inte anmälan)',
   description:
     'Gratis övning i Matematik 1, 2 och 3 inför prövning eller uppskrivning. För vuxna. Ingen anmälan tas emot här.',
+  alternates: { canonical: 'https://xn--prvning-b1a.se/kurser' },
+  openGraph: { url: 'https://xn--prvning-b1a.se/kurser' },
 };
 
 const kurserFaq = faqByIds(FAQ_KURSER_IDS);

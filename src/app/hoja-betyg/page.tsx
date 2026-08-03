@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   title: 'Så höjer du gymnasiebetyg som vuxen',
   description:
     'Prövning eller läsa kurs, anmälan lokalt, och övning. Kort steg-för-steg för dig som vill komplettera gymnasiebetyg.',
+  alternates: { canonical: 'https://xn--prvning-b1a.se/hoja-betyg' },
+  openGraph: { url: 'https://xn--prvning-b1a.se/hoja-betyg' },
 };
 
 const PAGE_URL = 'https://xn--prvning-b1a.se/hoja-betyg';

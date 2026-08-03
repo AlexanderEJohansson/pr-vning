@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     'Prövning.se — Vägledning för vuxna: prövning, anmälan via kommun & Matte 1–3',
   description:
     'Vuxen och vill höja gymnasiebetyg? Förklaring av prövning, hur anmälan funkar via kommun eller skola (vi tar inte emot anmälan), och gratis övning i Matematik 1–3. Inte Skolverket.',
+  alternates: { canonical: 'https://xn--prvning-b1a.se/' },
+  openGraph: { url: 'https://xn--prvning-b1a.se/' },
 };
 
 const homeFaq = faqByIds(FAQ_HOME_IDS);

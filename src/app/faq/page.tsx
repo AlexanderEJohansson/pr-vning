@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   title: 'FAQ — prövning, komvux och höja betyg',
   description:
     'Vanliga frågor om prövning för betyg, anmälan, komvux, gymnasiet, avgift och hur du övar. För vuxna som vill höja gymnasiebetyg.',
+  alternates: { canonical: 'https://xn--prvning-b1a.se/faq' },
+  openGraph: { url: 'https://xn--prvning-b1a.se/faq' },
 };
 
 const PAGE_URL = 'https://xn--prvning-b1a.se/faq';
